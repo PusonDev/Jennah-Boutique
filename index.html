@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JENNAH | Modest Fashion</title>
+<meta name="description" content="JENNAH - Timeless elegance in modest fashion. Discover our Oversized T-Shirt, Long Dress, Hijab and more.">
+<meta name="geo.region" content="FR-IDF">
+<meta name="geo.placename" content="Paris">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1c1c1c;--white:#fff;--light:#f7f7f7;--border:#e8e8e8;--text-muted:#888;--font:'Montserrat',sans-serif}
+body{font-family:var(--font);color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:var(--font)}
+
+/* ANNOUNCEMENT BAR */
+.ann-bar{background:var(--black);color:var(--white);height:36px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400;letter-spacing:.5px;position:relative;z-index:200;gap:.25rem}
+.ann-bar a{color:var(--white);text-decoration:underline}
+
+/* HEADER */
+header{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--border);z-index:100;height:64px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 2rem}
+.logo{font-size:1.5rem;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+nav.main-nav{display:flex;gap:2.5rem;align-items:center;height:100%}
+.nav-item{position:relative;height:100%;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;color:var(--black)}
+.nav-item:hover{color:var(--black)}
+.nav-item.sale-item{color:#c0392b}
+
+/* DROPDOWN / MEGA MENU */
+.dropdown{position:absolute;top:64px;left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.08);min-width:200px;padding:1.5rem 0;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;z-index:300}
+.nav-item:hover .dropdown{opacity:1;visibility:visible}
+.dropdown a{display:block;padding:.6rem 1.5rem;font-size:12px;font-weight:400;color:var(--black);white-space:nowrap;transition:color .15s}
+.dropdown a:hover{color:var(--text-muted)}
+
+/* MEGA dropdown - row style (PRINTEMPS, HIJAB) */
+.mega-row{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:100vw;background:var(--white);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;gap:3rem;align-items:center;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;z-index:300;pointer-events:none}
+.nav-item:hover .mega-row{opacity:1;visibility:visible;pointer-events:all}
+.mega-row a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;padding:.4rem 0;color:var(--black)}
+.mega-row a:hover{color:var(--text-muted)}
+
+/* HEADER ICONS */
+.hdr-icons{display:flex;align-items:center;gap:1.2rem}
+.hdr-icons button,.hdr-icons span{font-size:0;display:flex;align-items:center}
+.hdr-icons svg{width:20px;height:20px;stroke:var(--black);fill:none;stroke-width:1.5;cursor:pointer}
+.cart-wrapper{position:relative;cursor:pointer}
+
+/* MOBILE MENU BTN */
+.mob-menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.mob-menu-btn span{display:block;width:22px;height:1.5px;background:var(--black)}
+
+/* PAGE VIEWS */
+.page{display:none}
+.page.active{display:block}
+
+/* HOME - HERO */
+.hero{position:relative;overflow:hidden;background:#f0ede8}
+.hero-slide{position:relative;width:100%;cursor:pointer}
+.hero-slide img{width:100%;height:90vh;object-fit:cover;object-position:center top}
+.hero-label{position:absolute;bottom:2.5rem;left:2.5rem;color:var(--white);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:2px}
+
+/* EDITORIAL SPLIT SECTION */
+.editorial{display:grid;grid-template-columns:1fr 1fr}
+.editorial.reverse .edit-img{order:2}
+.editorial.reverse .edit-text{order:1}
+.edit-img img{width:100%;height:70vh;object-fit:cover}
+.edit-text{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;background:var(--light)}
+.edit-tag{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.edit-title{font-size:1.8rem;font-weight:600;margin-bottom:1.2rem;line-height:1.3}
+.edit-desc{font-size:13px;color:#555;line-height:1.8;margin-bottom:2rem;max-width:380px}
+.edit-cta{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--black);padding-bottom:2px;display:inline-block;cursor:pointer}
+
+/* STORES + STORY 2-COLUMN SECTION */
+.two-col-img{display:grid;grid-template-columns:1fr 1fr}
+.two-col-img .col-item{position:relative;overflow:hidden;cursor:pointer}
+.two-col-img .col-item img{width:100%;height:60vh;object-fit:cover;transition:transform .6s}
+.two-col-img .col-item:hover img{transform:scale(1.03)}
+.col-overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);text-align:center}
+.col-overlay h2{font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+.col-overlay p{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.col-overlay a{font-size:11px;font-weight:500;color:var(--white);border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:1px;letter-spacing:.5px}
+
+/* FOOTER */
+footer{background:var(--light);border-top:1px solid var(--border);padding:4rem 2rem 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem;color:var(--black)}
+.footer-col p{font-size:12px;color:#555;line-height:1.7;margin-bottom:1rem}
+.footer-col ul li{margin-bottom:.6rem}
+.footer-col ul li a{font-size:12px;color:#555;transition:color .15s}
+.footer-col ul li a:hover{color:var(--black)}
+.newsletter-form{display:flex;flex-direction:column;gap:.6rem}
+.newsletter-form input{padding:.7rem .8rem;border:1px solid var(--border);font-family:var(--font);font-size:12px;outline:none;background:var(--white)}
+.newsletter-form input:focus{border-color:var(--black)}
+.newsletter-form button{background:var(--black);color:var(--white);padding:.7rem;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+.newsletter-form button:hover{opacity:.8}
+.footer-logo{font-size:1.5rem;font-weight:700;letter-spacing:3px;text-align:right;margin-top:1rem}
+.footer-bottom{border-top:1px solid var(--border);padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text-muted)}
+.footer-bottom select{background:none;border:none;font-size:11px;color:var(--text-muted);font-family:var(--font);cursor:pointer;outline:none}
+.footer-bottom-left{display:flex;gap:1rem}
+
+/* CATEGORY PAGE */
+.cat-header{text-align:center;padding:2.5rem 2rem 1.5rem;font-size:1.1rem;font-weight:600;letter-spacing:1px}
+.cat-filters{display:flex;gap:1.5rem;padding:.8rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);align-items:center;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.cat-filters-left{display:flex;gap:1.5rem}
+.cat-filters-left a{color:var(--black);opacity:.5;transition:opacity .2s}
+.cat-filters-left a.active,.cat-filters-left a:hover{opacity:1}
+.cat-filters-right{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:1rem 0}
+.product-card{position:relative;cursor:pointer}
+.product-card img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top;background:#f5f5f5}
+.product-info{padding:.8rem 1rem}
+.product-name{font-size:12px;font-weight:500;margin-bottom:.3rem}
+.product-price{font-size:12px;color:var(--text-muted)}
+.product-colors{display:flex;gap:.3rem;margin-top:.4rem}
+.color-dot-sm{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
+.sold-out-badge{position:absolute;top:.8rem;left:.8rem;background:var(--white);font-size:10px;font-weight:600;letter-spacing:.5px;padding:2px 6px;text-transform:uppercase}
+.wishlist-btn{position:absolute;top:.8rem;right:.8rem;background:none;border:none;cursor:pointer;opacity:0;transition:opacity .2s}
+.product-card:hover .wishlist-btn{opacity:1}
+
+/* PRODUCT PAGE */
+.product-page{display:grid;grid-template-columns:3fr 2fr;min-height:80vh}
+.product-gallery{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.product-gallery img{width:100%;aspect-ratio:.75;object-fit:cover;object-position:top;background:#f0f0f0;cursor:zoom-in}
+.product-gallery img.single{grid-column:1/-1;aspect-ratio:1.5}
+.product-info-panel{padding:3rem 2.5rem;position:sticky;top:64px;align-self:start;max-height:calc(100vh - 64px);overflow-y:auto}
+.prod-title{font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+.prod-price{font-size:14px;color:var(--text-muted);margin-bottom:2rem}
+.prod-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.8rem;display:block}
+.size-options{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.size-btn{padding:.5rem 1rem;border:1px solid var(--border);font-size:12px;font-family:var(--font);cursor:pointer;transition:all .15s;background:var(--white)}
+.size-btn:hover,.size-btn.active{border-color:var(--black);background:var(--white)}
+.size-btn.sold-out{color:var(--border);cursor:not-allowed;text-decoration:line-through}
+.model-note{font-size:11px;color:var(--text-muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.4rem}
+.color-swatches{display:flex;gap:.6rem;margin-bottom:2rem}
+.swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.swatch.active,.swatch:hover{border-color:var(--black);outline:1px solid var(--border);outline-offset:2px}
+.add-to-cart{width:100%;padding:1rem;background:var(--black);color:var(--white);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;border:none;font-family:var(--font);margin-bottom:1rem}
+.add-to-cart:hover{opacity:.85}
+.delivery-note{font-size:12px;color:#27ae60;display:flex;align-items:center;gap:.5rem;margin-bottom:2rem}
+.acc-item{border-top:1px solid var(--border)}
+.acc-item:last-child{border-bottom:1px solid var(--border)}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-size:12px;font-weight:500;letter-spacing:.3px;cursor:pointer;background:none;border:none;font-family:var(--font);text-align:left}
+.acc-icon{font-size:1.2rem;font-weight:300;transition:transform .2s}
+.acc-content{display:none;padding-bottom:1.2rem;font-size:12px;color:#555;line-height:1.8}
+.acc-item.open .acc-content{display:block}
+.acc-item.open .acc-icon{transform:rotate(45deg)}
+.complete-look{margin-top:2rem;border-top:1px solid var(--border);padding-top:1.5rem}
+.complete-look h3{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
+.complete-look p{font-size:11px;color:var(--text-muted);margin-bottom:1rem}
+.look-product{display:flex;gap:1rem;margin-bottom:1rem}
+.look-img{width:80px;flex-shrink:0}
+.look-img img{width:100%;aspect-ratio:.75;object-fit:cover}
+.look-info{display:flex;flex-direction:column;justify-content:space-between;padding:.3rem 0}
+.look-name{font-size:11px;font-weight:500}
+.look-price{font-size:11px;color:var(--text-muted)}
+.look-add{width:100%;padding:.5rem;background:var(--black);color:var(--white);font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;font-family:var(--font)}
+
+/* BRAND PAGE */
+.brand-hero{position:relative;overflow:hidden}
+.brand-hero img{width:100%;height:55vh;object-fit:cover;object-position:center}
+.brand-hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);text-align:center}
+.brand-hero-overlay span{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:.5rem}
+.brand-hero-overlay h1{font-size:2.5rem;font-weight:400}
+.brand-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:5rem 4rem;align-items:start}
+.brand-text h2{font-size:1.3rem;font-weight:600;margin-bottom:1.5rem}
+.brand-text p{font-size:13px;color:#555;line-height:1.9;margin-bottom:1rem}
+.brand-img img{width:100%;height:600px;object-fit:cover}
+.brand-experience{padding:5rem 4rem;background:var(--light)}
+.brand-experience h2{font-size:1.5rem;font-weight:500;margin-bottom:1.5rem}
+.brand-experience p{font-size:13px;color:#555;line-height:1.9;max-width:680px;margin-bottom:1rem}
+
+/* STORES PAGE */
+.store-section{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0;border-bottom:1px solid var(--border)}
+.store-img img{width:100%;height:65vh;object-fit:cover}
+.store-info{padding:4rem}
+.store-addr{font-size:12px;color:var(--text-muted);margin-bottom:.5rem;font-weight:500}
+.store-name{font-size:1.5rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem}
+.store-hours h4{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.store-hours p{font-size:12px;color:#555;line-height:1.9}
+
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:400;opacity:0;visibility:hidden;transition:.3s}
+.cart-overlay.open{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:-420px;width:420px;height:100vh;background:var(--white);z-index:401;transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.cart-drawer.open{right:0}
+.cart-top{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-top h3{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.cart-close{font-size:1.5rem;cursor:pointer;line-height:1}
+.cart-body{flex:1;overflow-y:auto;padding:1.5rem}
+.cart-item{display:flex;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.cart-img img{width:80px;height:107px;object-fit:cover}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:12px;font-weight:500;margin-bottom:.3rem}
+.cart-item-variant{font-size:11px;color:var(--text-muted);margin-bottom:.5rem}
+.cart-item-price{font-size:12px}
+.cart-footer{padding:1.5rem;border-top:1px solid var(--border)}
+.cart-subtotal{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:1rem}
+.checkout-btn{width:100%;padding:1rem;background:var(--black);color:var(--white);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--font)}
+
+/* SEARCH OVERLAY */
+.search-overlay{position:fixed;inset:0;background:var(--white);z-index:500;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:.2s}
+.search-overlay.open{opacity:1;visibility:visible}
+.search-inner{padding:2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem}
+.search-input{flex:1;border:none;outline:none;font-size:1.2rem;font-family:var(--font)}
+.search-close{font-size:1.5rem;cursor:pointer}
+
+/* MOBILE NAV OVERLAY */
+.mob-overlay{position:fixed;inset:0;background:var(--white);z-index:200;transform:translateX(-100%);transition:.3s;overflow-y:auto}
+.mob-overlay.open{transform:translateX(0)}
+.mob-nav-top{padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.mob-nav-top .logo{font-size:1.2rem}
+.mob-nav-close{font-size:1.5rem;cursor:pointer}
+.mob-links{padding:1rem 0}
+.mob-link{display:block;padding:1rem 1.5rem;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--border);cursor:pointer}
+.mob-sub{padding:.5rem 0;border-bottom:1px solid var(--border)}
+.mob-sub a{display:block;padding:.6rem 2rem;font-size:13px;color:#555}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-logo{text-align:left}
+}
+@media(max-width:768px){
+  nav.main-nav{display:none !important}
+  .mob-menu-btn{display:flex}
+  .hdr-inner{padding:0 1.2rem;overflow:hidden}
+  .logo{font-size:1.2rem}
+  .editorial{grid-template-columns:1fr}
+  .editorial.reverse .edit-img,.editorial.reverse .edit-text{order:unset}
+  .two-col-img{grid-template-columns:1fr}
+  .product-page{grid-template-columns:1fr}
+  .product-gallery{grid-template-columns:1fr}
+  .product-info-panel{position:static;max-height:none}
+  .brand-content{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem}
+  .brand-experience{padding:3rem 1.5rem}
+  .store-section{grid-template-columns:1fr}
+  .store-info{padding:2rem 1.5rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .cart-drawer{width:100%;right:-100%}
+  .edit-text{padding:3rem 1.5rem}
+  .ann-bar{font-size:10px;padding:0 1rem;text-align:center}
+  .hdr-icons gap{gap:.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">Free delivery with Mondial Relay on orders&nbsp;<a href="#">over €100*</a></div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <div class="mob-menu-btn" onclick="openMob()"><span></span><span></span><span></span></div>
+    <a href="/en" class="logo spa" data-view="home">JENNAH</a>
+    <nav class="main-nav">
+      <!-- PRINTEMPS -->
+      <div class="nav-item">
+        <a class="spa" data-view="category" data-cat="printemps">PRINTEMPS</a>
+        <div class="mega-row">
+          <a class="spa" data-view="category" data-cat="oversize-tshirt">OVERSIZE T-SHIRT</a>
+          <a class="spa" data-view="category" data-cat="long-dress">LONG DRESS</a>
+          <a class="spa" data-view="category" data-cat="hijab">HIJAB</a>
+          <a class="spa" data-view="category" data-cat="set-two-pieces">SET TWO PIECES</a>
+        </div>
+      </div>
+      <!-- HIJAB -->
+      <div class="nav-item">
+        <a class="spa" data-view="category" data-cat="hijab">HIJAB</a>
+        <div class="mega-row">
+          <a class="spa" data-view="category" data-cat="premium-jersey">Premium jersey</a>
+          <a class="spa" data-view="category" data-cat="breath-jersey">Breath jersey</a>
+          <a class="spa" data-view="category" data-cat="air-jersey">Air jersey</a>
+          <a class="spa" data-view="category" data-cat="modal-hijab">MODAL HIJAB</a>
+          <a class="spa" data-view="category" data-cat="bamboo-hijab">Bamboo hijab</a>
+          <a class="spa" data-view="category" data-cat="sparkle-hijab">Sparkle hijab</a>
+          <a class="spa" data-view="category" data-cat="sport-hijab">SPORT HIJAB</a>
+        </div>
+      </div>
+      <!-- ALL CLOTHING - dropdown with nested -->
+      <div class="nav-item">
+        <a class="spa" data-view="category" data-cat="all-clothing">ALL CLOTHING</a>
+        <div class="dropdown" style="left:0;transform:none;min-width:180px">
+          <a class="spa" data-view="category" data-cat="dresses">Dresses ›</a>
+          <a class="spa" data-view="category" data-cat="top">Top ›</a>
+          <a class="spa" data-view="category" data-cat="bottom">Bottom ›</a>
+          <a class="spa" data-view="category" data-cat="sets">Sets ›</a>
+          <a class="spa" data-view="category" data-cat="hijab">HIJAB ›</a>
+          <a class="spa" data-view="category" data-cat="tote-bag">Tote bag</a>
+        </div>
+      </div>
+      <!-- SALE -->
+      <div class="nav-item sale-item"><a class="spa" data-view="category" data-cat="sale">SALE</a></div>
+      <!-- EXPLORE -->
+      <div class="nav-item">
+        <span>EXPLORE</span>
+        <div class="dropdown" style="right:0;left:auto;transform:none">
+          <a class="spa" data-view="brand">Story of the brand</a>
+          <a class="spa" data-view="stores">Our stores</a>
+          <a class="spa" data-view="faq">Frequently Asked Questions</a>
+        </div>
+      </div>
+    </nav>
+    <div class="hdr-icons">
+      <span onclick="openSearch()">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </span>
+      <div class="cart-wrapper" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HOME PAGE ========== -->
+<div id="view-home" class="page active">
+  <!-- HERO - Full bleed image, title bottom-left -->
+  <section class="hero">
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=1600&q=85" alt="Le T-Shirt Oversize">
+      <span class="hero-label">LE T-SHIRT OVERSIZE</span>
+    </div>
+  </section>
+
+  <!-- EDITORIAL 1: Oversized T-Shirt (image left, text right) -->
+  <section class="editorial">
+    <div class="edit-img">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=900&q=80" alt="The Oversized T-Shirt">
+    </div>
+    <div class="edit-text">
+      <span class="edit-tag">NEW COLLECTION</span>
+      <h2 class="edit-title">THE OVERSIZED T-SHIRT</h2>
+      <p class="edit-desc">Discover our signature Jennah t-shirt, a timeless piece. Made of a premium 100% cotton fabric, this essential basic combines comfort and elegance to accompany your most beautiful days of the spring-summer season.</p>
+      <a class="edit-cta spa" data-view="category" data-cat="oversize-tshirt">Discover</a>
+    </div>
+  </section>
+
+  <!-- EDITORIAL 2: Long Dress (image right, text left) -->
+  <section class="editorial reverse">
+    <div class="edit-text" style="background:var(--white)">
+      <span class="edit-tag">BEST SELLER</span>
+      <h2 class="edit-title">THE LONG DRESS</h2>
+      <p class="edit-desc">Fluid, elegant and comfortable, our long dresses accompany you from morning to evening. Each piece is designed with care to offer you the perfect modest look for every occasion.</p>
+      <a class="edit-cta spa" data-view="category" data-cat="long-dress">Discover</a>
+    </div>
+    <div class="edit-img">
+      <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=900&q=80" alt="Long Dress">
+    </div>
+  </section>
+
+  <!-- OUR STORES + OUR STORY 2-col -->
+  <section class="two-col-img">
+    <div class="col-item">
+      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=900&q=80" alt="Our Stores">
+      <div class="col-overlay">
+        <h2>OUR STORES</h2>
+        <p>Discover our stores</p>
+        <a class="spa" data-view="stores">See more</a>
+      </div>
+    </div>
+    <div class="col-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Our Story">
+      <div class="col-overlay">
+        <h2>OUR STORY</h2>
+        <p>Discover the brand</p>
+        <a class="spa" data-view="brand">Learn more</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========== CATEGORY PAGE ========== -->
+<div id="view-category" class="page">
+  <div class="cat-header" id="cat-title">All clothing</div>
+  <div class="cat-filters">
+    <div class="cat-filters-left">
+      <a class="active" href="#">DRESSES</a>
+      <a href="#">TOP</a>
+      <a href="#">BOTTOM</a>
+      <a href="#">SETS</a>
+      <a href="#">BURKINI</a>
+      <a href="#">PRAYER SET</a>
+    </div>
+    <div class="cat-filters-right">Filter</div>
+  </div>
+  <div class="products-grid" id="products-grid">
+    <!-- Products injected by JS -->
+  </div>
+</div>
+
+<!-- ========== PRODUCT PAGE ========== -->
+<div id="view-product" class="page">
+  <div class="product-page">
+    <div class="product-gallery" id="product-gallery"></div>
+    <div class="product-info-panel">
+      <h1 class="prod-title" id="prod-name">Kairouan dress khaki</h1>
+      <div class="prod-price" id="prod-price">€54,00 EUR</div>
+      <span class="prod-label">Taille:</span>
+      <div class="size-options">
+        <button class="size-btn">Taille 1</button>
+        <button class="size-btn active">Taille 2</button>
+        <button class="size-btn">Taille 3</button>
+      </div>
+      <p class="model-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        The model is 1m74 tall and is wearing size 2
+      </p>
+      <span class="prod-label">Color: <span id="prod-color-name">khaki</span></span>
+      <div class="color-swatches">
+        <div class="swatch active" style="background:#8B7D5E;" onclick="selectColor(this,'Khaki')"></div>
+        <div class="swatch" style="background:#4A4A4A;" onclick="selectColor(this,'Anthracite')"></div>
+        <div class="swatch" style="background:#1a1a1a;" onclick="selectColor(this,'Black')"></div>
+      </div>
+      <button class="add-to-cart" onclick="addToCart()">Add to cart</button>
+      <p class="delivery-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#27ae60" stroke="none"/></svg>
+        Delivery to your home from <strong>mercredi 06/05</strong>
+      </p>
+      <!-- Accordions -->
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">Description <span class="acc-icon">+</span></button>
+        <div class="acc-content">Kairouan dress in khaki. V-neck with smocked waist. Long sleeves with smocking. Available in khaki, anthracite and black. 100% polyester. Made in Turkey.</div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">Delivery and returns <span class="acc-icon">+</span></button>
+        <div class="acc-content">Standard delivery via Colissimo: 4-6 working days. Mondial Relay: Free on orders over €100. Returns accepted within 14 days. Items must be unworn and in original condition.</div>
+      </div>
+      <!-- Complete the look -->
+      <div class="complete-look">
+        <h3>Buy the complete look</h3>
+        <p>The mannequin's complete outfit</p>
+        <div class="look-product">
+          <div class="look-img"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=200&q=70" alt="Breath jersey"></div>
+          <div class="look-info">
+            <div class="look-name">Breath jersey tmar</div>
+            <div class="look-price">€29,00 EUR</div>
+            <button class="look-add">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== BRAND PAGE ========== -->
+<div id="view-brand" class="page">
+  <div class="brand-hero">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80" alt="Our Story">
+    <div class="brand-hero-overlay">
+      <span>JENNAH, timeless elegance</span>
+      <h1>Our story</h1>
+    </div>
+  </div>
+  <div class="brand-content">
+    <div class="brand-text">
+      <h2>The brand</h2>
+      <p>Founded in 2014 by Myriam Atallah and her mother, JENNAH is a brand that combines refinement and minimalism in the field of modest fashion.</p>
+      <p>The collections reflect a unique fusion between the designer's Tunisian and Algerian heritage and the inspiration drawn from her Parisian environment. Each collection is a tribute to this cultural duality.</p>
+      <p>Each piece embodies timelessness, alternating between traditional designs for capsule collections and streamlined creations, inspired by Parisian elegance, for more essential collections.</p>
+      <p>Durability and fabric quality are at the heart of JENNAH's values.</p>
+      <p>The brand is committed to offering pieces designed to last, collaborating with the finest workshops in Turkey, Asia, and Europe, while prioritizing premium materials such as linen and cotton.</p>
+    </div>
+    <div class="brand-img">
+      <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&q=80" alt="The brand">
+    </div>
+  </div>
+  <div class="brand-experience">
+    <h2>The JENNAH Experience</h2>
+    <p>In 2018, JENNAH opened its first boutique in Aubervilliers, followed in 2024 by a second in Noisy-le-Sec. These boutiques offer a personalized experience, thanks to a team of experienced advisors ready to assist each customer in her choices.</p>
+    <p>In parallel, JENNAH is actively involved in social causes, donating a portion of its profits to charities working for the most disadvantaged.</p>
+    <p>With an international ambition, JENNAH continues its expansion, driven by values of quality, sustainability and timeless elegance.</p>
+  </div>
+</div>
+
+<!-- ========== STORES PAGE ========== -->
+<div id="view-stores" class="page">
+  <div class="store-section">
+    <div class="store-img">
+      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=900&q=80" alt="JENNAH Aubervilliers">
+    </div>
+    <div class="store-info">
+      <p class="store-addr">86, Rue des Cités 93300 Aubervilliers</p>
+      <h2 class="store-name">JENNAH AUBERVILLERS</h2>
+      <div class="store-hours">
+        <h4>Horaires d'ouverture</h4>
+        <p>
+          Lundi Fermé<br>
+          Mardi 10h-19h00<br>
+          Mercredi 10h-19h00<br>
+          Jeudi 10h-19h00<br>
+          Vendredi 10h-19h00<br>
+          Samedi 10h-19h00<br>
+          Dimanche Fermé
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FAQ PAGE ========== -->
+<div id="view-faq" class="page" style="padding:4rem 2rem;max-width:800px;margin:0 auto">
+  <h1 style="font-size:1.5rem;font-weight:400;text-align:center;margin-bottom:3rem">frequently asked questions</h1>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">How to order from abroad ? <span class="acc-icon">+</span></button><div class="acc-content">You can order from our website and have it delivered internationally. Additional shipping costs may apply.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">What should I do if an item is out of stock ? <span class="acc-icon">+</span></button><div class="acc-content">You can sign up to be notified when the item is back in stock using the notification button on the product page.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Can I modify or cancel my order after it has been validated ? <span class="acc-icon">+</span></button><div class="acc-content">Please contact us as soon as possible. We can modify or cancel orders that have not yet been dispatched.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">What payment methods do you accept ? <span class="acc-icon">+</span></button><div class="acc-content">We accept credit cards (Visa, Mastercard, Amex), PayPal and Apple Pay.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">What are the delivery times ? <span class="acc-icon">+</span></button><div class="acc-content">Standard delivery 4-6 working days. Express delivery 2-3 working days. Mondial Relay 4-7 working days.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">How long do I have to return an item? <span class="acc-icon">+</span></button><div class="acc-content">You have 14 days from delivery to return any item in its original condition and packaging.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">When will I be reimbursed after a return? <span class="acc-icon">+</span></button><div class="acc-content">Refunds are processed within 5-10 business days after we receive your return.</div></div>
+  <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Can I exchange an item? <span class="acc-icon">+</span></button><div class="acc-content">Yes. Please contact us with your order number and the item you would like to exchange for.</div></div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Sign up to receive all the information about our latest collections, products, offers, and projects by email.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="E-mail">
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>FAQs</h4>
+      <ul>
+        <li><a class="spa" data-view="faq">Join our team</a></li>
+        <li><a class="spa" data-view="faq">Delivery Information</a></li>
+        <li><a class="spa" data-view="faq">Orders</a></li>
+        <li><a class="spa" data-view="faq">Secure payment</a></li>
+        <li><a class="spa" data-view="faq">Returns &amp; exchanges</a></li>
+        <li><a class="spa" data-view="faq">Size guide</a></li>
+        <li><a class="spa" data-view="faq">Gift card</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal notices and cookies</h4>
+      <ul>
+        <li><a href="#">Legal notices</a></li>
+        <li><a href="#">Conditions of sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Jennah</h4>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a class="spa" data-view="stores">Our stores</a></li>
+        <li><a class="spa" data-view="brand">The brand</a></li>
+        <li><a class="spa" data-view="category" data-cat="ramadan">Ramadan collection 2026</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our social networks</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Tiktok</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-logo">JENNAH</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <select><option>Bangladesh (EUR €)</option><option>France (EUR €)</option></select>
+      <select><option>English</option><option>Français</option><option>العربية</option></select>
+    </div>
+    <div>Crédits. © 2026 - JENNAH &nbsp;|&nbsp; <strong>All Rights Reserved to Baba Puson</strong></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-top">
+    <h3>Your Cart</h3>
+    <span class="cart-close" onclick="toggleCart()">×</span>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-item">
+      <div class="cart-img"><img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=70" alt=""></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">Kairouan dress khaki</div>
+        <div class="cart-item-variant">Taille 2 / Khaki</div>
+        <div class="cart-item-price">€54,00 EUR</div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal"><span>Subtotal</span><span>€54,00 EUR</span></div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay">
+  <div class="search-inner">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    <input class="search-input" placeholder="Search..." autofocus id="search-input">
+    <span class="search-close" onclick="closeSearch()">×</span>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mob-overlay" id="mob-overlay">
+  <div class="mob-nav-top">
+    <span class="logo">JENNAH</span>
+    <span class="mob-nav-close" onclick="closeMob()">×</span>
+  </div>
+  <div class="mob-links">
+    <div class="mob-link spa" data-view="category" data-cat="printemps">PRINTEMPS</div>
+    <div class="mob-link spa" data-view="category" data-cat="hijab">HIJAB</div>
+    <div class="mob-link spa" data-view="category" data-cat="all-clothing">ALL CLOTHING</div>
+    <div class="mob-link spa" data-view="category" data-cat="sale" style="color:#c0392b">SALE</div>
+    <div class="mob-link spa" data-view="brand">Story of the brand</div>
+    <div class="mob-link spa" data-view="stores">Our stores</div>
+    <div class="mob-link spa" data-view="faq">FAQs</div>
+  </div>
+</div>
+
+<script>
+// ============ DATA ============
+const PRODUCTS = [
+  {id:'kairouan-khaki',name:'Kairouan dress khaki',price:'€54,00 EUR',img:'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80',colors:['#8B7D5E','#1a1a1a'],cat:'dresses'},
+  {id:'origin-kaki',name:'Origin dress kaki',price:'€58,00 EUR',img:'https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=600&q=80',colors:['#8B7D5E','#d0cdc8'],soldOut:true,cat:'dresses'},
+  {id:'epure-taupe',name:'Épure abaya taupe',price:'€79,00 EUR',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',colors:['#C4B09A'],cat:'dresses'},
+  {id:'over-modal',name:'Over modal dress kaki',price:'€62,00 EUR',img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80',colors:['#8B7D5E','#1a1a1a','#5a5a5a'],sale:'€50,00 EUR',cat:'dresses'},
+  {id:'netbris-beige',name:'Netbris dress beige',price:'€64,00 EUR',img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80',colors:['#D4C4B0','#1a1a1a'],cat:'bottom'},
+  {id:'netbris-sage',name:'Netbris dress sage',price:'€62,00 EUR',img:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80',colors:['#9aad8f','#1a1a1a'],cat:'bottom'},
+  {id:'prayer-set',name:'Prayer dress white',price:'€42,00 EUR',img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&q=80',colors:['#f5f5f5','#d0d0c8'],cat:'sets'},
+  {id:'premium-jersey',name:'Premium jersey hijab',price:'€18,00 EUR',img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80',colors:['#C4B09A','#1a1a1a','#8B7D5E'],cat:'hijab'},
+];
+
+// ============ ROUTER ============
+function navigate(view, extra) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('view-'+view);
+  if(el) {
+    el.classList.add('active');
+    window.scrollTo(0,0);
+    const path = view === 'home' ? '/en' : view === 'category' ? '/en/collections/'+(extra||'all-clothing') : '/en/pages/'+view;
+    history.pushState({view, extra}, '', path);
+    if(view === 'category') renderCategory(extra);
+    if(view === 'product') renderProduct(extra);
+  }
+  closeMob();
+}
+
+document.querySelectorAll('.spa').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    const view = el.dataset.view || 'home';
+    const extra = el.dataset.cat || el.dataset.product || null;
+    navigate(view, extra);
+  });
+});
+
+window.addEventListener('popstate', e => {
+  if(e.state) navigate(e.state.view, e.state.extra);
+});
+
+// ============ CATEGORY ============
+const catTitles = {
+  'all-clothing':'All clothing','printemps':'Printemps','hijab':'Hijab',
+  'dresses':'Dresses','top':'Top','bottom':'Bottom','sets':'Sets',
+  'oversize-tshirt':'Oversize T-Shirt','long-dress':'Long Dress',
+  'sale':'Sale','ramadan':'Ramadan Collection 2026',
+  'premium-jersey':'Premium Jersey Hijab','breath-jersey':'Breath Jersey',
+  'air-jersey':'Air Jersey','modal-hijab':'Modal Hijab',
+  'bamboo-hijab':'Bamboo Hijab','sparkle-hijab':'Sparkle Hijab','sport-hijab':'Sport Hijab',
+  'tote-bag':'Tote Bag','set-two-pieces':'Set Two Pieces'
+};
+
+function renderCategory(cat) {
+  document.getElementById('cat-title').textContent = catTitles[cat] || 'Collection';
+  const grid = document.getElementById('products-grid');
+  let prods = PRODUCTS;
+  if(cat && cat !== 'all-clothing' && cat !== 'printemps') {
+    prods = PRODUCTS.filter(p => p.cat === cat || cat.includes(p.cat));
+    if(!prods.length) prods = PRODUCTS;
+  }
+  grid.innerHTML = prods.map(p => `
+    <div class="product-card" onclick="navigate('product','${p.id}')">
+      ${p.soldOut ? '<div class="sold-out-badge">SOLD OUT</div>' : ''}
+      <button class="wishlist-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </button>
+      <img src="${p.img}" alt="${p.name}">
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${p.sale ? '<s style="opacity:.5">'+p.price+'</s> '+p.sale : p.price}</div>
+        <div class="product-colors">${(p.colors||[]).map(c=>`<div class="color-dot-sm" style="background:${c}"></div>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ PRODUCT ============
+function renderProduct(id) {
+  const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
+  document.getElementById('prod-name').textContent = p.name;
+  document.getElementById('prod-price').textContent = p.price;
+  document.getElementById('prod-color-name').textContent = 'khaki';
+  const gallery = document.getElementById('product-gallery');
+  gallery.innerHTML = `
+    <img src="${p.img}" alt="${p.name}">
+    <img src="${p.img.replace('w=600','w=600')}" alt="${p.name}" style="filter:brightness(.97)">
+  `;
+}
+
+// ============ ACCORDION ============
+function toggleAcc(btn) {
+  const item = btn.closest('.acc-item');
+  item.classList.toggle('open');
+}
+
+// ============ COLOR SELECT ============
+function selectColor(el, name) {
+  document.querySelectorAll('.color-swatches .swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('prod-color-name').textContent = name.toLowerCase();
+}
+
+// ============ SIZE SELECT ============
+document.addEventListener('click', e => {
+  if(e.target.classList.contains('size-btn') && !e.target.classList.contains('sold-out')) {
+    e.target.closest('.size-options').querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+});
+
+// ============ CART ============
+function toggleCart() {
+  document.getElementById('cart-overlay').classList.toggle('open');
+  document.getElementById('cart-drawer').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('cart-drawer').classList.contains('open') ? 'hidden' : '';
+}
+function addToCart() { toggleCart(); }
+
+// ============ SEARCH ============
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('search-input').focus(), 100);
+}
+function closeSearch() { document.getElementById('search-overlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key==='Escape'){closeSearch();if(document.getElementById('cart-drawer').classList.contains('open'))toggleCart();} });
+
+// ============ MOBILE NAV ============
+function openMob() { document.getElementById('mob-overlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMob() { document.getElementById('mob-overlay').classList.remove('open'); document.body.style.overflow=''; }
+
+// ============ INITIAL RENDER ============
+(function init() {
+  const path = location.pathname;
+  if(path.includes('/collections/')) {
+    const cat = path.split('/collections/')[1] || 'all-clothing';
+    navigate('category', cat);
+  } else if(path.includes('/pages/brand') || path.includes('/pages/about')) {
+    navigate('brand');
+  } else if(path.includes('/pages/stores')) {
+    navigate('stores');
+  } else if(path.includes('/pages/faq')) {
+    navigate('faq');
+  } else {
+    navigate('home');
+  }
+})();
+</script>
+</body>
+</html>

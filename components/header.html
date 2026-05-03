@@ -1,0 +1,105 @@
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+    <div class="announcement-left" style="width: 150px;"></div> <!-- Spacer -->
+    
+    <div class="announcement-slider">
+        <div class="announcement-slide active">Free Shipping on orders over €150</div>
+        <div class="announcement-slide">Discover the New Eid Collection</div>
+    </div>
+    
+    <div class="announcement-right">
+        <div class="lang-switcher">
+            <span style="cursor:pointer">EN</span> | 
+            <span style="cursor:pointer; color: var(--light-text);">FR</span> | 
+            <span style="cursor:pointer; color: var(--light-text);">AR</span>
+        </div>
+        <div class="currency-switcher" style="cursor:pointer">
+            EUR € <i class='bx bx-chevron-down'></i>
+        </div>
+    </div>
+</div>
+
+<!-- Main Header -->
+<header class="header">
+    <div class="container header-inner">
+        
+        <!-- Mobile Hamburger -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Logo -->
+        <a href="#" data-link="home" class="logo">
+            CLIENT BOUTIQUE
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-menu">
+            <div class="nav-item">
+                <a href="#" data-link="home">New Arrivals</a>
+            </div>
+            <div class="nav-item">
+                <a href="#" data-link="category">Abaya</a>
+                
+                <!-- Mega Menu Injected via include mechanism or directly inline -->
+                <div class="mega-menu">
+                    <div class="container mega-menu-inner">
+                        <div class="mega-col">
+                            <h4>By Style</h4>
+                            <ul>
+                                <li><a href="#">Closed Abayas</a></li>
+                                <li><a href="#">Open Abayas</a></li>
+                                <li><a href="#">Khimar & Abaya Sets</a></li>
+                                <li><a href="#">Butterfly Abayas</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h4>By Fabric</h4>
+                            <ul>
+                                <li><a href="#">Nida</a></li>
+                                <li><a href="#">Satin</a></li>
+                                <li><a href="#">Crepe</a></li>
+                                <li><a href="#">Linen</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col" style="flex: 1;">
+                            <!-- Promo Image -->
+                            <div style="background: url('https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=400&q=80') center/cover; height: 100%; min-height: 200px; display: flex; align-items: flex-end; padding: 1.5rem;">
+                                <a href="#" class="btn-primary" style="background: var(--white); color: var(--primary-color);">Shop New Collection</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="nav-item">
+                <a href="#" data-link="category">Ready To Wear</a>
+            </div>
+            <div class="nav-item">
+                <a href="#" data-link="category">Jilbab</a>
+            </div>
+            <div class="nav-item">
+                <a href="#" style="color: var(--error-color);">Sales</a>
+            </div>
+        </nav>
+
+        <!-- Icons -->
+        <div class="header-icons">
+            <button class="icon-btn search-btn" aria-label="Search">
+                <i class='bx bx-search'></i>
+            </button>
+            <button class="icon-btn account-btn" aria-label="Account">
+                <i class='bx bx-user'></i>
+            </button>
+            <button class="icon-btn wishlist-btn" aria-label="Wishlist">
+                <i class='bx bx-heart'></i>
+            </button>
+            <button class="icon-btn cart-btn" id="open-cart-btn" aria-label="Cart">
+                <i class='bx bx-cart'></i>
+                <span class="cart-badge">2</span>
+            </button>
+        </div>
+    </div>
+</header>
