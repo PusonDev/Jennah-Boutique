@@ -4,7 +4,7 @@
 
 A **pixel-perfect, high-performance Single Page Application (SPA)** replicating the [JENNAH Boutique](https://jennah-boutique.com/) website — a premium modest fashion brand based in Paris, France.
 
-> 🛍️ **Live Demo**: [View on GitHub Pages](https://yourusername.github.io/Jennah-Boutique)
+> 🛍️ **Live Demo**: [View on GitHub Pages](https://Puson88.github.io/Jennah-Boutique)
 
 ---
 
@@ -141,7 +141,7 @@ npx serve .
 
 Built with ❤️ by **Baba Puson** as part of a portfolio project demonstrating pixel-perfect frontend replication skills.
 
-- 🔗 GitHub: [@yourusername](https://github.com/yourusername)
+- 🔗 GitHub: [@BabaPuson](https://github.com/Puson88)
 
 ---
 
