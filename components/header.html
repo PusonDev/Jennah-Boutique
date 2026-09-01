@@ -1,105 +1,95 @@
-<!-- Announcement Bar -->
-<div class="announcement-bar">
-    <div class="announcement-left" style="width: 150px;"></div> <!-- Spacer -->
-    
-    <div class="announcement-slider">
-        <div class="announcement-slide active">Free Shipping on orders over €150</div>
-        <div class="announcement-slide">Discover the New Eid Collection</div>
+<!-- Header Component -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <!-- Mobile Hamburger Button -->
+    <div class="mob-menu-btn" onclick="openMob()" aria-label="Open Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    
-    <div class="announcement-right">
-        <div class="lang-switcher">
-            <span style="cursor:pointer">EN</span> | 
-            <span style="cursor:pointer; color: var(--light-text);">FR</span> | 
-            <span style="cursor:pointer; color: var(--light-text);">AR</span>
+
+    <!-- Brand Logo -->
+    <a href="#home" class="logo spa" data-view="home">JENNAH</a>
+
+    <!-- Desktop Mega Navigation -->
+    <nav class="main-nav">
+      <!-- PRINTEMPS -->
+      <div class="nav-item">
+        <a href="#category/printemps" class="spa" data-view="category" data-cat="printemps">PRINTEMPS</a>
+        <div class="mega-row">
+          <a href="#category/printemps" class="spa" data-view="category" data-cat="printemps">All Spring Drop 2026</a>
+          <a href="#category/oversize-tshirt" class="spa" data-view="category" data-cat="oversize-tshirt">Oversize T-Shirt</a>
+          <a href="#category/dresses" class="spa" data-view="category" data-cat="dresses">Long Dresses &amp; Abayas</a>
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">Premium Hijabs</a>
+          <a href="#category/set-two-pieces" class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Sets</a>
+          <a href="#category/burkini" class="spa" data-view="category" data-cat="burkini">Modest Swimwear</a>
         </div>
-        <div class="currency-switcher" style="cursor:pointer">
-            EUR € <i class='bx bx-chevron-down'></i>
+      </div>
+
+      <!-- HIJAB -->
+      <div class="nav-item">
+        <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">HIJAB BAR</a>
+        <div class="mega-row">
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">All Hijab Collection</a>
+          <a href="#category/premium-jersey" class="spa" data-view="category" data-cat="premium-jersey">Premium Jersey</a>
+          <a href="#category/modal-hijab" class="spa" data-view="category" data-cat="modal-hijab">Modal Silk (Soie de Modal)</a>
+          <a href="#category/prayer-set" class="spa" data-view="category" data-cat="prayer-set">Prayer Dresses &amp; Hijabs</a>
         </div>
+      </div>
+
+      <!-- ALL CLOTHING -->
+      <div class="nav-item">
+        <a href="#category/all-clothing" class="spa" data-view="category" data-cat="all-clothing">ALL CLOTHING</a>
+        <div class="dropdown" style="left:0; transform:none; min-width:210px">
+          <a href="#category/dresses" class="spa" data-view="category" data-cat="dresses">Abayas &amp; Long Dresses ›</a>
+          <a href="#category/top" class="spa" data-view="category" data-cat="top">Oversized Tops &amp; Shirts ›</a>
+          <a href="#category/set-two-pieces" class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Modest Sets ›</a>
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">All Hijabs ›</a>
+          <a href="#category/burkini" class="spa" data-view="category" data-cat="burkini">Burkini &amp; Modest Swim ›</a>
+          <a href="#category/prayer-set" class="spa" data-view="category" data-cat="prayer-set">Prayer Outfits ›</a>
+        </div>
+      </div>
+
+      <!-- LOOKBOOK -->
+      <div class="nav-item">
+        <a href="#lookbook" class="spa" data-view="lookbook">LOOKBOOK</a>
+      </div>
+
+      <!-- SALE -->
+      <div class="nav-item sale-item">
+        <a href="#category/sale" class="spa" data-view="category" data-cat="sale">SALE ARCHIVE</a>
+      </div>
+
+      <!-- EXPLORE -->
+      <div class="nav-item">
+        <span>EXPLORE</span>
+        <div class="dropdown" style="right:0; left:auto; transform:none">
+          <a href="#brand" class="spa" data-view="brand">Story of the Brand</a>
+          <a href="#stores" class="spa" data-view="stores">Our Stores (Aubervilliers &amp; Noisy)</a>
+          <a href="#faq" class="spa" data-view="faq">Frequently Asked Questions</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Action Icons -->
+    <div class="hdr-icons">
+      <button onclick="openSearch()" title="Search Catalog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+
+      <button onclick="openAuthModal()" title="My Account / Sign In">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+
+      <div class="wishlist-hdr-wrap spa" data-view="wishlist" title="Wishlist">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="badge-count wishlist-count-badge" style="display:none">0</span>
+      </div>
+
+      <div class="cart-wrapper" onclick="toggleCart()" title="Shopping Cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="badge-count cart-count-badge" style="display:none">0</span>
+      </div>
     </div>
-</div>
-
-<!-- Main Header -->
-<header class="header">
-    <div class="container header-inner">
-        
-        <!-- Mobile Hamburger -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <!-- Logo -->
-        <a href="#" data-link="home" class="logo">
-            CLIENT BOUTIQUE
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="nav-menu">
-            <div class="nav-item">
-                <a href="#" data-link="home">New Arrivals</a>
-            </div>
-            <div class="nav-item">
-                <a href="#" data-link="category">Abaya</a>
-                
-                <!-- Mega Menu Injected via include mechanism or directly inline -->
-                <div class="mega-menu">
-                    <div class="container mega-menu-inner">
-                        <div class="mega-col">
-                            <h4>By Style</h4>
-                            <ul>
-                                <li><a href="#">Closed Abayas</a></li>
-                                <li><a href="#">Open Abayas</a></li>
-                                <li><a href="#">Khimar & Abaya Sets</a></li>
-                                <li><a href="#">Butterfly Abayas</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col">
-                            <h4>By Fabric</h4>
-                            <ul>
-                                <li><a href="#">Nida</a></li>
-                                <li><a href="#">Satin</a></li>
-                                <li><a href="#">Crepe</a></li>
-                                <li><a href="#">Linen</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col" style="flex: 1;">
-                            <!-- Promo Image -->
-                            <div style="background: url('https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=400&q=80') center/cover; height: 100%; min-height: 200px; display: flex; align-items: flex-end; padding: 1.5rem;">
-                                <a href="#" class="btn-primary" style="background: var(--white); color: var(--primary-color);">Shop New Collection</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="nav-item">
-                <a href="#" data-link="category">Ready To Wear</a>
-            </div>
-            <div class="nav-item">
-                <a href="#" data-link="category">Jilbab</a>
-            </div>
-            <div class="nav-item">
-                <a href="#" style="color: var(--error-color);">Sales</a>
-            </div>
-        </nav>
-
-        <!-- Icons -->
-        <div class="header-icons">
-            <button class="icon-btn search-btn" aria-label="Search">
-                <i class='bx bx-search'></i>
-            </button>
-            <button class="icon-btn account-btn" aria-label="Account">
-                <i class='bx bx-user'></i>
-            </button>
-            <button class="icon-btn wishlist-btn" aria-label="Wishlist">
-                <i class='bx bx-heart'></i>
-            </button>
-            <button class="icon-btn cart-btn" id="open-cart-btn" aria-label="Cart">
-                <i class='bx bx-cart'></i>
-                <span class="cart-badge">2</span>
-            </button>
-        </div>
-    </div>
+  </div>
 </header>

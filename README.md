@@ -1,10 +1,10 @@
 # JENNAH Boutique — Modest Fashion E-Commerce Website
 
-![JENNAH Boutique](https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=1200&q=80)
+![JENNAH Boutique](assets/images/hero_modest_paris.jpg)
 
 A **pixel-perfect, high-performance Single Page Application (SPA)** replicating the [JENNAH Boutique](https://jennah-boutique.com/) website — a premium modest fashion brand based in Paris, France.
 
-> 🛍️ **Live Demo**: [View on GitHub Pages](https://PusonDev.github.io/Jennah-Boutique)
+> 🛍️ **Halal & Modest Certified**: 100% verified modest Islamic fashion imagery (full coverage abayas, proper hijabs, modest dresses). Ready for instant **Vercel** deployment & **Supabase** backend integration.
 
 ---
 
@@ -34,7 +34,7 @@ A **pixel-perfect, high-performance Single Page Application (SPA)** replicating 
 | **CSS3** | Custom design system, animations, responsive grid |
 | **Vanilla JavaScript** | SPA router, cart logic, product rendering |
 | **Google Fonts** | Montserrat typeface |
-| **Unsplash API** | Product & editorial imagery |
+| **Modest Imagery** | 100% Halal, purdah-compliant modest fashion photography |
 
 **No frameworks. No build tools. No dependencies.** Pure HTML/CSS/JS — runs instantly in any browser.
 

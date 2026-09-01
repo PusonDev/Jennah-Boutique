@@ -1,337 +1,22 @@
 /**
  * JENNAH BOUTIQUE — MASTER APPLICATION CONTROLLER
- * Single Page Application (SPA), E-Commerce Cart, Live Search,
- * Category Filters, Wishlist & Multi-Currency Engine
+ * SPA Router, E-Commerce Cart Engine, Multi-Step Checkout, Live Search,
+ * Category Filters, Size Guide Modal, VIP Appointments & Supabase Hooks.
  */
 
 // =========================================================
-// 1. DATA STORE — PRODUCT CATALOG
+// 1. DATA & STATE MANAGEMENT
 // =========================================================
-const PRODUCTS = [
-  {
-    id: 'kairouan-khaki',
-    name: 'Kairouan Dress Khaki',
-    price: 54,
-    cat: 'dresses',
-    subcat: 'printemps',
-    img: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=900&q=85',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85',
-      'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Khaki', hex: '#8B7D5E' },
-      { name: 'Anthracite', hex: '#4A4A4A' },
-      { name: 'Black', hex: '#1c1c1c' }
-    ],
-    sizes: ['Taille 1', 'Taille 2', 'Taille 3'],
-    soldOut: false,
-    sale: null,
-    desc: 'Kairouan dress in fluid crepe with delicate waist pleats. Mandarin neckline with smocked cuffs for a sophisticated Parisian modest drape. 100% premium woven polyester. Made in Turkey.',
-    details: 'Standard fit. The model is 1m74 tall and is wearing size 2. Machine wash at 30°C gentle cycle.',
-    look: {
-      name: 'Breath Jersey Hijab Tmar',
-      price: 24,
-      img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=300&q=80'
-    }
-  },
-  {
-    id: 'epure-taupe-abaya',
-    name: 'Épure Signature Abaya Taupe',
-    price: 79,
-    cat: 'dresses',
-    subcat: 'printemps',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85',
-      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Taupe', hex: '#C4B09A' },
-      { name: 'Onyx', hex: '#1c1c1c' },
-      { name: 'Sage', hex: '#9aad8f' }
-    ],
-    sizes: ['Taille 1', 'Taille 2', 'Taille 3'],
-    soldOut: false,
-    sale: null,
-    desc: 'Our iconic Épure abaya created in high-density Nida fabric. Characterized by clean vertical lines, discreet hidden side pockets, and an effortlessly flowing silhouette.',
-    details: 'Dry clean or hand wash cold. Model is 1m76 and wears Taille 2.',
-    look: {
-      name: 'Modal Silk Hijab Beige',
-      price: 22,
-      img: 'https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=300&q=80'
-    }
-  },
-  {
-    id: 'oversize-tshirt-spring',
-    name: 'Le T-Shirt Oversize Blanc',
-    price: 36,
-    cat: 'top',
-    subcat: 'oversize-tshirt',
-    img: 'https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=900&q=85',
-      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=85'
-    ],
-    colors: [
-      { name: 'White', hex: '#ffffff' },
-      { name: 'Sand', hex: '#d9cdbe' },
-      { name: 'Noir', hex: '#1c1c1c' }
-    ],
-    sizes: ['XS/S', 'M/L', 'XL/XXL'],
-    soldOut: false,
-    sale: null,
-    desc: 'Crafted from 100% heavy organic French Terry cotton (240 GSM). Features an elongated modest hem, dropped shoulders, and embroidered tone-on-tone JENNAH emblem on the nape.',
-    details: '100% Organic Cotton. Pre-shrunk fabric. Designed in Paris.',
-    look: {
-      name: 'Netbris Wide Leg Trouser',
-      price: 48,
-      img: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300&q=80'
-    }
-  },
-  {
-    id: 'over-modal-dress',
-    name: 'Over Modal Maxi Dress Kaki',
-    price: 62,
-    sale: 49,
-    cat: 'dresses',
-    subcat: 'sale',
-    img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85',
-      'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Kaki', hex: '#8B7D5E' },
-      { name: 'Noir', hex: '#1c1c1c' },
-      { name: 'Gris', hex: '#777777' }
-    ],
-    sizes: ['Taille 1', 'Taille 2'],
-    soldOut: false,
-    desc: 'Luxuriously soft modal jersey fabric that breathes naturally in spring & summer weather. Features a relaxed cut with discreet side slits for optimal ease of movement.',
-    details: '95% Modal, 5% Elastane. Model is 1m72 wearing Taille 1.',
-    look: {
-      name: 'Air Jersey Hijab Taupe',
-      price: 19,
-      img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=300&q=80'
-    }
-  },
-  {
-    id: 'netbris-trouser-beige',
-    name: 'Netbris Flowy Palazzo Beige',
-    price: 64,
-    cat: 'bottom',
-    subcat: 'printemps',
-    img: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Beige', hex: '#D4C4B0' },
-      { name: 'Noir', hex: '#1c1c1c' }
-    ],
-    sizes: ['S (36/38)', 'M (40/42)', 'L (44/46)'],
-    soldOut: false,
-    sale: null,
-    desc: 'High-waisted wide leg trousers with tailored front pleats and an elasticated back waistband for supreme elegance and comfort throughout the day.',
-    details: '100% Linen-look Crepe. Inseam 105cm.',
-    look: {
-      name: 'Le T-Shirt Oversize Blanc',
-      price: 36,
-      img: 'https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=300&q=80'
-    }
-  },
-  {
-    id: 'premium-jersey-hijab',
-    name: 'Premium Jersey Hijab Sand',
-    price: 18,
-    cat: 'hijab',
-    subcat: 'premium-jersey',
-    img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=900&q=85',
-      'https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Sand', hex: '#C4B09A' },
-      { name: 'Noir', hex: '#1c1c1c' },
-      { name: 'Olive', hex: '#8B7D5E' },
-      { name: 'Mocha', hex: '#634b35' }
-    ],
-    sizes: ['180 x 70 cm'],
-    soldOut: false,
-    sale: null,
-    desc: 'Ultra-stretch, non-slip premium modal jersey with seamless laser-cut edging. Stays effortlessly in place without pins or undercaps.',
-    details: 'Fabric: 95% Rayon Jersey, 5% Spandex. Dimension: 180cm x 70cm.',
-    look: {
-      name: 'Épure Signature Abaya Taupe',
-      price: 79,
-      img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80'
-    }
-  },
-  {
-    id: 'origin-dress-kaki',
-    name: 'Origin Kimono Dress Kaki',
-    price: 58,
-    cat: 'dresses',
-    subcat: 'long-dress',
-    img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Kaki', hex: '#8B7D5E' },
-      { name: 'Gris', hex: '#d0cdc8' }
-    ],
-    sizes: ['Taille 1', 'Taille 2'],
-    soldOut: true,
-    sale: null,
-    desc: 'Kimono-inspired long dress with structured sleeves, optional waist sash, and an opulent textured linen-cotton weave.',
-    details: 'Currently sold out. Sign up to be notified upon re-stock.',
-    look: {
-      name: 'Premium Jersey Hijab Sand',
-      price: 18,
-      img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=300&q=80'
-    }
-  },
-  {
-    id: 'set-two-pieces-linen',
-    name: 'Ensemble Lin 2 Pièces Écru',
-    price: 89,
-    cat: 'sets',
-    subcat: 'set-two-pieces',
-    img: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Écru', hex: '#f5f5f0' },
-      { name: 'Chocolat', hex: '#4a3728' }
-    ],
-    sizes: ['Taille 1 (36-40)', 'Taille 2 (42-46)'],
-    soldOut: false,
-    sale: null,
-    desc: 'A coordinated two-piece tunic and straight-leg trouser set cut in breathable linen blend. The ultimate modest wardrobe staple for refined summer layering.',
-    details: '70% Linen, 30% Cotton. Designed for a comfortable loose drape.',
-    look: {
-      name: 'JENNAH Canvas Tote Bag',
-      price: 25,
-      img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=300&q=80'
-    }
-  },
-  {
-    id: 'prayer-dress-white',
-    name: 'Prayer Abaya & Attached Hijab White',
-    price: 42,
-    cat: 'prayer-set',
-    subcat: 'sets',
-    img: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Pure White', hex: '#ffffff' },
-      { name: 'Soft Pearl', hex: '#eae7e1' }
-    ],
-    sizes: ['Unique (One Size)'],
-    soldOut: false,
-    sale: null,
-    desc: 'All-in-one prayer dress with sewn-in integrated hijab, stretch cuffs for easy ablution, and zipper pouch for portable travel convenience.',
-    details: '100% Rayon Voile. Fits heights from 1m55 to 1m78.',
-    look: {
-      name: 'Modal Silk Hijab Beige',
-      price: 22,
-      img: 'https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=300&q=80'
-    }
-  },
-  {
-    id: 'burkini-swimwear-noir',
-    name: 'Burkini 3 Pièces Riviera Noir',
-    price: 75,
-    cat: 'burkini',
-    subcat: 'printemps',
-    img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Black', hex: '#1c1c1c' },
-      { name: 'Navy', hex: '#162238' }
-    ],
-    sizes: ['S (36)', 'M (38/40)', 'L (42/44)', 'XL (46)'],
-    soldOut: false,
-    sale: null,
-    desc: 'Quick-dry, UV50+ sun protection modest swimwear consisting of a belted swim tunic, swim leggings with button fasteners, and an ergonomic swim turban.',
-    details: '82% Polyamide, 18% Elastane. Chlorine & salt water resistant.',
-    look: {
-      name: 'JENNAH Canvas Tote Bag',
-      price: 25,
-      img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=300&q=80'
-    }
-  },
-  {
-    id: 'jennah-canvas-tote',
-    name: 'JENNAH Paris Signature Canvas Tote',
-    price: 25,
-    cat: 'tote-bag',
-    subcat: 'all-clothing',
-    img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Natural Ecru', hex: '#e8e2d5' }
-    ],
-    sizes: ['42 x 38 x 10 cm'],
-    soldOut: false,
-    sale: null,
-    desc: 'Heavyweight organic cotton canvas tote bag featuring the Parisian flagship address screenprint and reinforced handles.',
-    details: '100% Fairtrade Organic Cotton 340 GSM.',
-    look: {
-      name: 'Le T-Shirt Oversize Blanc',
-      price: 36,
-      img: 'https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=300&q=80'
-    }
-  },
-  {
-    id: 'modal-silk-hijab',
-    name: 'Modal Silk Hijab Beige',
-    price: 22,
-    cat: 'hijab',
-    subcat: 'modal-hijab',
-    img: 'https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=800&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1601646849487-1e5bdf44a959?w=900&q=85'
-    ],
-    colors: [
-      { name: 'Beige Champagne', hex: '#dfd2c0' },
-      { name: 'Rose Poudré', hex: '#d9b8b8' },
-      { name: 'Nude', hex: '#cbb69d' }
-    ],
-    sizes: ['195 x 75 cm'],
-    soldOut: false,
-    sale: null,
-    desc: 'Lustrous modal blended with delicate silk threads for an exceptional sheen and cloud-soft touch against the skin.',
-    details: '85% Modal, 15% Mulberry Silk.',
-    look: {
-      name: 'Épure Signature Abaya Taupe',
-      price: 79,
-      img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80'
-    }
-  }
-];
+const PRODUCTS = window.JENNAH_PRODUCTS || PRODUCTS_DATA;
 
-// =========================================================
-// 2. STATE MANAGEMENT & LOCAL STORAGE
-// =========================================================
 let cart = JSON.parse(localStorage.getItem('jennah_cart') || '[]');
 let wishlist = JSON.parse(localStorage.getItem('jennah_wishlist') || '[]');
 let currentCurrency = localStorage.getItem('jennah_currency') || 'EUR';
-let currentLanguage = localStorage.getItem('jennah_lang') || 'en';
-let currentProductId = PRODUCTS[0].id;
+let currentProductId = PRODUCTS[0]?.id || 'kairouan-khaki';
 let currentSort = 'featured';
 let activeCategoryFilter = 'all';
+let appliedDiscount = 0; // percentage
+let activeProdQty = 1;
 
 const CURRENCY_RATES = {
   EUR: { symbol: '€', rate: 1, suffix: ' EUR' },
@@ -357,31 +42,23 @@ function saveWishlist() {
 }
 
 // =========================================================
-// 3. SPA ROUTER
+// 2. SPA ROUTING ENGINE
 // =========================================================
 const catTitles = {
-  'all-clothing': 'All Clothing',
-  'printemps': 'Spring / Summer 2026 Collection',
-  'hijab': 'Hijab Collection',
-  'dresses': 'Dresses & Abayas',
-  'top': 'Tops & Shirts',
-  'bottom': 'Trousers & Skirts',
-  'sets': 'Co-ord Sets',
-  'oversize-tshirt': 'Oversize T-Shirt Collection',
-  'long-dress': 'Long Dress Collection',
+  'all-clothing': 'All Clothing & Modest Wardrobe',
+  'printemps': 'Spring / Summer 2026 Modest Drop',
+  'hijab': 'The Hijab Bar',
+  'dresses': 'Abayas & Long Modest Dresses',
+  'top': 'Oversized Organic Tops & Tunics',
+  'bottom': 'Modest Palazzos & Trousers',
+  'sets': 'Coordinated Modest Sets',
+  'set-two-pieces': 'Two-Piece Linen & Crepe Sets',
+  'oversize-tshirt': 'Oversize Organic French Cotton',
   'sale': 'Special Offers & Archives',
-  'ramadan': 'Ramadan & Eid Capsule 2026',
-  'premium-jersey': 'Premium Jersey Hijabs',
-  'breath-jersey': 'Breath Jersey Hijabs',
-  'air-jersey': 'Air Jersey Hijabs',
-  'modal-hijab': 'Modal Silk Hijabs',
-  'bamboo-hijab': 'Organic Bamboo Hijabs',
-  'sparkle-hijab': 'Sparkle & Festive Hijabs',
-  'sport-hijab': 'Sport Performance Hijabs',
-  'tote-bag': 'Tote Bags & Accessories',
-  'set-two-pieces': 'Two-Piece Modest Sets',
-  'burkini': 'Modest Swimwear (Burkini)',
-  'prayer-set': 'Prayer Outfits'
+  'premium-jersey': 'Premium Stretch Jersey Hijabs',
+  'modal-hijab': 'Modal Silk Hijabs (Soie de Modal)',
+  'burkini': 'Burkini & Modest UV Swimwear',
+  'prayer-set': 'All-in-One Prayer Dresses & Outfits'
 };
 
 function navigate(view, extra) {
@@ -392,24 +69,25 @@ function navigate(view, extra) {
     el.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    let path = '/en';
+    // Hash update for clean URL sharing & direct bookmarks
+    let hash = `#${view}`;
     if (view === 'category') {
-      path = '/en/collections/' + (extra || 'all-clothing');
+      hash = `#category/${extra || 'all-clothing'}`;
     } else if (view === 'product') {
-      path = '/en/products/' + (extra || 'kairouan-khaki');
-    } else if (view !== 'home') {
-      path = '/en/pages/' + view;
+      hash = `#product/${extra || currentProductId}`;
     }
     
-    history.pushState({ view, extra }, '', path);
+    if (window.location.hash !== hash) {
+      history.pushState({ view, extra }, '', hash);
+    }
     
-    if (view === 'category') {
+    if (view === 'home') {
+      renderHomeFeatured();
+    } else if (view === 'category') {
       renderCategory(extra);
-    }
-    if (view === 'product') {
+    } else if (view === 'product') {
       renderProduct(extra);
-    }
-    if (view === 'wishlist') {
+    } else if (view === 'wishlist') {
       renderWishlistPage();
     }
   }
@@ -417,12 +95,16 @@ function navigate(view, extra) {
 }
 
 window.addEventListener('popstate', e => {
-  if (e.state) {
-    navigate(e.state.view, e.state.extra);
-  } else {
-    navigate('home');
-  }
+  handleHashRoute();
 });
+
+function handleHashRoute() {
+  const hash = window.location.hash.replace('#', '') || 'home';
+  const parts = hash.split('/');
+  const view = parts[0] || 'home';
+  const extra = parts[1] || null;
+  navigate(view, extra);
+}
 
 // Intercept SPA link clicks
 document.addEventListener('click', e => {
@@ -436,11 +118,24 @@ document.addEventListener('click', e => {
 });
 
 // =========================================================
-// 4. CATEGORY & PRODUCT RENDERING
+// 3. HOME & CATEGORY RENDERING
 // =========================================================
+function renderHomeFeatured() {
+  const grid = document.getElementById('home-featured-grid');
+  if (!grid) return;
+  
+  const featured = PRODUCTS.slice(0, 4);
+  grid.innerHTML = featured.map(p => createProductCardHtml(p)).join('');
+}
+
 function renderCategory(cat) {
-  const title = catTitles[cat] || (cat ? cat.replace('-', ' ') : 'All Clothing');
-  document.getElementById('cat-title').textContent = title;
+  const selectedCat = cat || 'all-clothing';
+  const title = catTitles[selectedCat] || selectedCat.replace('-', ' ').toUpperCase();
+  
+  const titleEl = document.getElementById('cat-title');
+  const breadcrumbEl = document.getElementById('cat-breadcrumb-curr');
+  if (titleEl) titleEl.textContent = title;
+  if (breadcrumbEl) breadcrumbEl.textContent = title;
   
   // Highlight active filter pill
   document.querySelectorAll('.cat-filter-btn').forEach(btn => {
@@ -451,15 +146,17 @@ function renderCategory(cat) {
   });
 
   const grid = document.getElementById('products-grid');
+  if (!grid) return;
+  
   let prods = [...PRODUCTS];
 
   // Category filtering
-  if (cat && cat !== 'all-clothing') {
+  if (selectedCat && selectedCat !== 'all-clothing') {
     prods = prods.filter(p => 
-      p.cat === cat || 
-      p.subcat === cat || 
-      (cat === 'sale' && p.sale) ||
-      (cat === 'printemps' && p.subcat === 'printemps')
+      p.cat === selectedCat || 
+      p.subcat === selectedCat || 
+      (selectedCat === 'sale' && p.sale) ||
+      (selectedCat === 'printemps' && p.subcat === 'printemps')
     );
   }
 
@@ -480,55 +177,72 @@ function renderCategory(cat) {
   if (prods.length === 0) {
     grid.innerHTML = `
       <div style="grid-column:1/-1; text-align:center; padding:5rem 2rem; color:var(--text-muted);">
-        <p style="font-size:1.1rem; margin-bottom:1rem;">No items found in this category.</p>
+        <p style="font-size:1.1rem; margin-bottom:1rem;">No modest pieces found matching this filter.</p>
         <button class="hero-btn" onclick="filterCategory('all')">View All Collections</button>
       </div>
     `;
     return;
   }
 
-  grid.innerHTML = prods.map(p => {
-    const isWish = wishlist.includes(p.id);
-    const priceDisplay = p.sale 
-      ? `<span class="original-price">${formatPrice(p.price)}</span> <span class="sale-price">${formatPrice(p.sale)}</span>`
-      : formatPrice(p.price);
+  grid.innerHTML = prods.map(p => createProductCardHtml(p)).join('');
+}
 
-    return `
-      <div class="product-card">
-        <div class="product-card-img-wrap" onclick="navigate('product','${p.id}')">
-          ${p.soldOut ? '<div class="sold-out-badge">SOLD OUT</div>' : ''}
-          ${p.sale ? '<div class="sale-badge">SALE</div>' : ''}
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
-        </div>
-        <button class="wishlist-btn ${isWish ? 'active' : ''}" onclick="toggleWishlist('${p.id}', event)" title="Add to Wishlist">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-          </svg>
-        </button>
-        <div class="product-info" onclick="navigate('product','${p.id}')">
-          <div class="product-name">${p.name}</div>
-          <div class="product-price">${priceDisplay}</div>
-          <div class="product-colors">
-            ${p.colors.map(c => `<div class="color-dot-sm" style="background:${c.hex};" title="${c.name}"></div>`).join('')}
-          </div>
+function createProductCardHtml(p) {
+  const isWish = wishlist.includes(p.id);
+  const priceDisplay = p.sale 
+    ? `<span class="original-price">${formatPrice(p.price)}</span> <span class="sale-price">${formatPrice(p.sale)}</span>`
+    : formatPrice(p.price);
+
+  return `
+    <div class="product-card">
+      <div class="product-card-img-wrap" onclick="navigate('product','${p.id}')">
+        ${p.badge ? `<div class="sale-badge" style="${p.badge === 'BESTSELLER' ? 'background:#b39b6b;' : ''}">${p.badge}</div>` : ''}
+        <img src="${p.img}" alt="${p.name}" loading="lazy" id="prod-card-img-${p.id}">
+      </div>
+      <button class="wishlist-btn ${isWish ? 'active' : ''}" onclick="toggleWishlist('${p.id}', event)" title="Save to Wishlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+      </button>
+      <div class="product-info" onclick="navigate('product','${p.id}')">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${priceDisplay}</div>
+        <div class="product-colors">
+          ${p.colors.map(c => `
+            <div class="color-dot-sm" style="background:${c.hex};" title="${c.name}" onclick="switchCardPreview('${p.id}', '${c.img}', event)"></div>
+          `).join('')}
         </div>
       </div>
-    `;
-  }).join('');
+    </div>
+  `;
+}
+
+function switchCardPreview(prodId, imgUrl, event) {
+  if (event) event.stopPropagation();
+  const img = document.getElementById(`prod-card-img-${prodId}`);
+  if (img && imgUrl) {
+    img.src = imgUrl;
+  }
 }
 
 function filterCategory(filterType) {
   activeCategoryFilter = filterType;
-  renderCategory(history.state?.extra || 'all-clothing');
+  const hash = window.location.hash.replace('#', '') || 'category/all-clothing';
+  const parts = hash.split('/');
+  const cat = parts[1] || 'all-clothing';
+  renderCategory(cat);
 }
 
 function handleSort(sortValue) {
   currentSort = sortValue;
-  renderCategory(history.state?.extra || 'all-clothing');
+  const hash = window.location.hash.replace('#', '') || 'category/all-clothing';
+  const parts = hash.split('/');
+  const cat = parts[1] || 'all-clothing';
+  renderCategory(cat);
 }
 
 // =========================================================
-// 5. PRODUCT DETAIL PAGE
+// 4. PRODUCT DETAIL PAGE (PDP)
 // =========================================================
 let selectedColor = '';
 let selectedSize = '';
@@ -538,14 +252,36 @@ function renderProduct(id) {
   currentProductId = p.id;
   selectedColor = p.colors[0]?.name || 'Standard';
   selectedSize = p.sizes[0] || 'Standard';
+  activeProdQty = 1;
 
-  document.getElementById('prod-name').textContent = p.name;
+  const qtyEl = document.getElementById('prod-qty-val');
+  if (qtyEl) qtyEl.textContent = activeProdQty;
+
+  const nameEl = document.getElementById('prod-name');
+  const breadcrumbName = document.getElementById('prod-breadcrumb-name');
+  if (nameEl) nameEl.textContent = p.name;
+  if (breadcrumbName) breadcrumbName.textContent = p.name;
   
+  // Price
   const priceEl = document.getElementById('prod-price');
-  if (p.sale) {
-    priceEl.innerHTML = `<span class="original-price" style="text-decoration:line-through; color:var(--text-muted); font-size:0.95em;">${formatPrice(p.price)}</span> <span style="color:var(--accent-sale);">${formatPrice(p.sale)}</span>`;
-  } else {
-    priceEl.textContent = formatPrice(p.price);
+  if (priceEl) {
+    if (p.sale) {
+      priceEl.innerHTML = `<span class="original-price" style="text-decoration:line-through; color:var(--text-muted); font-size:0.95em; margin-right:8px;">${formatPrice(p.price)}</span> <span style="color:var(--accent-sale); font-weight:700;">${formatPrice(p.sale)}</span>`;
+    } else {
+      priceEl.textContent = formatPrice(p.price);
+    }
+  }
+
+  // Reviews
+  const ratingWrap = document.getElementById('prod-rating-stars');
+  if (ratingWrap) {
+    ratingWrap.innerHTML = `★★★★★ <span id="prod-review-count">(${p.reviewCount || 48} reviews)</span>`;
+  }
+
+  // Badges
+  const badgeWrap = document.getElementById('prod-badge-wrap');
+  if (badgeWrap) {
+    badgeWrap.innerHTML = p.badge ? `<span class="prod-badge-pill">${p.badge}</span>` : '';
   }
 
   document.getElementById('prod-color-name').textContent = selectedColor;
@@ -554,14 +290,14 @@ function renderProduct(id) {
   const gallery = document.getElementById('product-gallery');
   const allImages = p.gallery && p.gallery.length ? p.gallery : [p.img];
   gallery.innerHTML = allImages.map((imgUrl, idx) => `
-    <img src="${imgUrl}" alt="${p.name} view ${idx + 1}" class="${allImages.length === 1 ? 'full-width' : ''}" loading="lazy">
+    <img src="${imgUrl}" alt="${p.name} modest view ${idx + 1}" class="${allImages.length === 1 ? 'full-width' : ''}" loading="lazy">
   `).join('');
 
   // Sizes
   const sizeWrap = document.getElementById('prod-size-options');
   if (sizeWrap) {
     sizeWrap.innerHTML = p.sizes.map((sz, idx) => `
-      <button class="size-btn ${idx === 0 ? 'active' : ''} ${p.soldOut ? 'sold-out' : ''}" onclick="selectSize(this, '${sz}')">${sz}</button>
+      <button class="size-btn ${idx === 0 ? 'active' : ''}" onclick="selectSize(this, '${sz}')">${sz}</button>
     `).join('');
   }
 
@@ -569,14 +305,18 @@ function renderProduct(id) {
   const swatchWrap = document.getElementById('prod-color-swatches');
   if (swatchWrap) {
     swatchWrap.innerHTML = p.colors.map((c, idx) => `
-      <div class="swatch ${idx === 0 ? 'active' : ''}" style="background:${c.hex};" title="${c.name}" onclick="selectColor(this, '${c.name}')"></div>
+      <div class="swatch ${idx === 0 ? 'active' : ''}" style="background:${c.hex};" title="${c.name}" onclick="selectColor(this, '${c.name}', '${c.img || p.img}')"></div>
     `).join('');
   }
 
-  // Description
+  // Descriptions & Origin
   const descEl = document.getElementById('prod-desc-content');
   if (descEl) {
-    descEl.innerHTML = `<p>${p.desc}</p><p style="margin-top:0.8rem; font-size:11.5px; color:var(--text-muted);">${p.details}</p>`;
+    descEl.innerHTML = `
+      <p style="margin-bottom:0.8rem;">${p.desc}</p>
+      <p style="font-size:12px; color:var(--text-muted);"><strong>Material:</strong> ${p.material || '100% Premium Fabric'}</p>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:4px;"><strong>Atelier Origin:</strong> ${p.origin || 'Ethically handcrafted in Turkey'}</p>
+    `;
   }
 
   // Cross sell "Buy the Complete Look"
@@ -585,8 +325,8 @@ function renderProduct(id) {
     if (p.look) {
       lookWrap.style.display = 'block';
       lookWrap.innerHTML = `
-        <h3>Buy the complete look</h3>
-        <p>The mannequin's styled accessory</p>
+        <h3>Complete Your Modest Silhouette</h3>
+        <p>Mannequin styled with matching hijab &amp; accessory</p>
         <div class="look-product">
           <div class="look-img"><img src="${p.look.img}" alt="${p.look.name}"></div>
           <div class="look-info">
@@ -602,11 +342,16 @@ function renderProduct(id) {
   }
 }
 
-function selectColor(el, name) {
+function selectColor(el, name, imgUrl) {
   document.querySelectorAll('#prod-color-swatches .swatch').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
   selectedColor = name;
   document.getElementById('prod-color-name').textContent = name;
+  
+  if (imgUrl) {
+    const galleryFirstImg = document.querySelector('#product-gallery img');
+    if (galleryFirstImg) galleryFirstImg.src = imgUrl;
+  }
 }
 
 function selectSize(btn, sz) {
@@ -615,13 +360,19 @@ function selectSize(btn, sz) {
   selectedSize = sz;
 }
 
+function adjustProdQty(delta) {
+  activeProdQty = Math.max(1, activeProdQty + delta);
+  const qtyEl = document.getElementById('prod-qty-val');
+  if (qtyEl) qtyEl.textContent = activeProdQty;
+}
+
 function toggleAcc(btn) {
   const item = btn.closest('.acc-item');
   item.classList.toggle('open');
 }
 
 // =========================================================
-// 6. CART MANAGEMENT
+// 5. SHOPPING BAG & PROMO CODES
 // =========================================================
 function toggleCart() {
   const overlay = document.getElementById('cart-overlay');
@@ -643,7 +394,7 @@ function addToCart() {
   );
 
   if (existingIdx > -1) {
-    cart[existingIdx].qty += 1;
+    cart[existingIdx].qty += activeProdQty;
   } else {
     cart.push({
       id: p.id,
@@ -652,13 +403,13 @@ function addToCart() {
       img: p.img,
       size: selectedSize,
       color: selectedColor,
-      qty: 1
+      qty: activeProdQty
     });
   }
 
   saveCart();
   toggleCart();
-  showToast(`Added ${p.name} to your cart`);
+  showToast(`Added ${p.name} (${activeProdQty}) to your shopping bag`);
 }
 
 function quickAddLook(name, price, img) {
@@ -673,7 +424,7 @@ function quickAddLook(name, price, img) {
   });
   saveCart();
   toggleCart();
-  showToast(`Added ${name} to your cart`);
+  showToast(`Added ${name} to your bag`);
 }
 
 function updateCartQuantity(index, delta) {
@@ -690,7 +441,22 @@ function removeFromCart(index) {
   const name = cart[index].name;
   cart.splice(index, 1);
   saveCart();
-  showToast(`Removed ${name} from cart`);
+  showToast(`Removed ${name} from bag`);
+}
+
+function applyPromoCode() {
+  const code = (document.getElementById('promo-input').value || '').trim().toUpperCase();
+  if (code === 'PARIS10' || code === 'WELCOME10') {
+    appliedDiscount = 0.10; // 10%
+    showToast('✨ Promo code PARIS10 applied: 10% discount!');
+  } else if (code === 'JENNAH15') {
+    appliedDiscount = 0.15; // 15%
+    showToast('✨ Promo code JENNAH15 applied: 15% discount!');
+  } else {
+    appliedDiscount = 0;
+    showToast('Invalid promo code. Try PARIS10');
+  }
+  updateCartUI();
 }
 
 function updateCartUI() {
@@ -712,9 +478,9 @@ function updateCartUI() {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
         </svg>
-        <p style="font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Your cart is empty</p>
+        <p style="font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Your shopping bag is empty</p>
         <p style="font-size:12px; margin-top:0.4rem; color:var(--text-muted);">Explore our latest Parisian modest wear creations.</p>
-        <button class="cart-empty-btn" onclick="toggleCart(); navigate('category', 'all-clothing');">Start Shopping</button>
+        <button class="cart-empty-btn" onclick="toggleCart(); navigate('category', 'all-clothing');">Discover Collections</button>
       </div>
     `;
     subtotalEl.textContent = formatPrice(0);
@@ -723,10 +489,10 @@ function updateCartUI() {
     return;
   }
 
-  let totalEUR = 0;
+  let rawTotalEUR = 0;
   cartBody.innerHTML = cart.map((item, idx) => {
     const itemTotal = item.price * item.qty;
-    totalEUR += itemTotal;
+    rawTotalEUR += itemTotal;
 
     return `
       <div class="cart-item">
@@ -748,42 +514,228 @@ function updateCartUI() {
     `;
   }).join('');
 
-  subtotalEl.textContent = formatPrice(totalEUR);
+  const finalTotalEUR = appliedDiscount > 0 ? rawTotalEUR * (1 - appliedDiscount) : rawTotalEUR;
+  subtotalEl.innerHTML = appliedDiscount > 0
+    ? `<span style="text-decoration:line-through; font-size:0.9em; color:var(--text-muted);">${formatPrice(rawTotalEUR)}</span> <span style="color:var(--accent-sale); font-weight:700;">${formatPrice(finalTotalEUR)}</span>`
+    : formatPrice(finalTotalEUR);
 
   // Free shipping progress bar (target 100 EUR)
   if (fillBar && shippingMsg) {
-    const progress = Math.min(100, Math.round((totalEUR / 100) * 100));
+    const progress = Math.min(100, Math.round((rawTotalEUR / 100) * 100));
     fillBar.style.width = progress + '%';
-    if (totalEUR >= 100) {
-      shippingMsg.innerHTML = `<strong>Congratulations!</strong> You unlocked <strong>Free Delivery</strong> 🎉`;
+    if (rawTotalEUR >= 100) {
+      shippingMsg.innerHTML = `<strong>Félicitations!</strong> You unlocked <strong>Free Mondial Relay Delivery</strong> 🎉`;
     } else {
-      const remaining = 100 - totalEUR;
-      shippingMsg.innerHTML = `Add <strong>${formatPrice(remaining)}</strong> more to get <strong>Free Delivery</strong>!`;
+      const remaining = 100 - rawTotalEUR;
+      shippingMsg.innerHTML = `Add <strong>${formatPrice(remaining)}</strong> more for <strong>Free Delivery</strong>!`;
     }
   }
 }
 
-function handleCheckout() {
+// =========================================================
+// 6. MULTI-STEP CHECKOUT & ORDER CONFIRMATION
+// =========================================================
+function openCheckoutModal() {
   if (cart.length === 0) {
-    showToast('Your cart is empty');
+    showToast('Your shopping bag is empty.');
     return;
   }
-  
-  const total = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
-  const confirmCheckout = confirm(
-    `Order Summary (${cart.length} items):\nTotal: ${formatPrice(total)}\n\nProceed to secure payment gateway?`
-  );
-  
-  if (confirmCheckout) {
+  toggleCart(); // Close cart drawer
+  document.getElementById('checkout-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  goToCheckoutStep(1);
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkout-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function goToCheckoutStep(stepNumber) {
+  document.getElementById('checkout-step-1').style.display = stepNumber === 1 ? 'block' : 'none';
+  document.getElementById('checkout-step-2').style.display = stepNumber === 2 ? 'block' : 'none';
+  document.getElementById('checkout-step-3').style.display = stepNumber === 3 ? 'block' : 'none';
+
+  document.getElementById('step-1-nav').className = 'step-badge ' + (stepNumber >= 1 ? 'active' : '');
+  document.getElementById('step-2-nav').className = 'step-badge ' + (stepNumber >= 2 ? 'active' : '');
+  document.getElementById('step-3-nav').className = 'step-badge ' + (stepNumber >= 3 ? 'active' : '');
+
+  if (stepNumber === 2) {
+    renderCheckoutSummary();
+  }
+}
+
+function renderCheckoutSummary() {
+  const summaryBox = document.getElementById('checkout-order-summary');
+  const rawTotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+  const discountAmt = rawTotal * appliedDiscount;
+  const shipping = rawTotal >= 100 ? 0 : 4.90;
+  const grandTotal = rawTotal - discountAmt + shipping;
+
+  summaryBox.innerHTML = `
+    <h4 style="font-size:12px; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem;">Order Summary (${cart.length} items)</h4>
+    <div style="font-size:12.5px; line-height:1.8; color:var(--text-main);">
+      <div style="display:flex; justify-content:space-between;">
+        <span>Subtotal:</span>
+        <span>${formatPrice(rawTotal)}</span>
+      </div>
+      ${appliedDiscount > 0 ? `
+      <div style="display:flex; justify-content:space-between; color:var(--accent-sale);">
+        <span>Promo Discount:</span>
+        <span>-${formatPrice(discountAmt)}</span>
+      </div>` : ''}
+      <div style="display:flex; justify-content:space-between;">
+        <span>Mondial Relay Delivery:</span>
+        <span>${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px; border-top:1px solid var(--border); padding-top:6px; margin-top:6px;">
+        <span>Total Due:</span>
+        <span>${formatPrice(grandTotal)}</span>
+      </div>
+    </div>
+  `;
+}
+
+async function processCheckout(event) {
+  event.preventDefault();
+  const payBtn = document.getElementById('pay-now-btn');
+  payBtn.disabled = true;
+  payBtn.textContent = 'Processing Payment...';
+
+  const orderPayload = {
+    customer_name: `${document.getElementById('chk-fname').value} ${document.getElementById('chk-lname').value}`,
+    email: document.getElementById('chk-email').value,
+    address: `${document.getElementById('chk-address').value}, ${document.getElementById('chk-city').value} ${document.getElementById('chk-zip').value}, ${document.getElementById('chk-country').value}`,
+    items: cart,
+    currency: currentCurrency,
+    total: cart.reduce((acc, i) => acc + (i.price * i.qty), 0)
+  };
+
+  // Submit through Supabase client adapter
+  let createdOrder = null;
+  if (window.jennahSupabase) {
+    createdOrder = await window.jennahSupabase.createOrder(orderPayload);
+  }
+
+  const orderId = createdOrder?.order_id || ('JB-' + Math.floor(100000 + Math.random() * 900000));
+
+  setTimeout(() => {
     cart = [];
     saveCart();
-    toggleCart();
-    showToast('✨ Merci! Order confirmed successfully! Tracking info sent.');
+    appliedDiscount = 0;
+    payBtn.disabled = false;
+    payBtn.textContent = 'Pay & Confirm Order';
+
+    const confirmMsg = document.getElementById('order-confirm-msg');
+    if (confirmMsg) {
+      confirmMsg.innerHTML = `Order <strong>#${orderId}</strong> placed successfully. A confirmation receipt has been sent to <strong>${orderPayload.email}</strong>.`;
+    }
+
+    goToCheckoutStep(3);
+    showToast('✨ Merci! Order confirmed successfully.');
+  }, 1200);
+}
+
+// =========================================================
+// 7. MODALS: SIZE GUIDE, VIP APPOINTMENTS & AUTH
+// =========================================================
+function openSizeGuideModal() {
+  document.getElementById('sizeguide-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSizeGuideModal() {
+  document.getElementById('sizeguide-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openAppointmentModal(location) {
+  const modal = document.getElementById('appointment-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (location) {
+    document.getElementById('apt-location').value = location;
+  }
+}
+
+function closeAppointmentModal() {
+  document.getElementById('appointment-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function handleAppointmentSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const booking = {
+    name: form.querySelector('input[type="text"]').value,
+    email: form.querySelector('input[type="email"]').value,
+    phone: form.querySelector('input[type="tel"]').value,
+    location: form.querySelector('select').value,
+    date: form.querySelector('input[type="date"]').value
+  };
+
+  if (window.jennahSupabase) {
+    await window.jennahSupabase.bookStylingAppointment(booking);
+  }
+
+  closeAppointmentModal();
+  showToast(`✨ VIP Session reserved for ${booking.name} at Boutique ${booking.location}`);
+  form.reset();
+}
+
+function openAuthModal() {
+  document.getElementById('auth-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAuthModal() {
+  document.getElementById('auth-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function switchAuthTab(tab) {
+  document.getElementById('tab-login').className = 'auth-tab ' + (tab === 'login' ? 'active' : '');
+  document.getElementById('tab-register').className = 'auth-tab ' + (tab === 'register' ? 'active' : '');
+  document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('register-form').style.display = tab === 'register' ? 'block' : 'none';
+  document.getElementById('auth-modal-title').textContent = tab === 'login' ? 'Client Concierge Sign In' : 'Create JENNAH Account';
+}
+
+async function handleAuthLogin(event) {
+  event.preventDefault();
+  const email = document.getElementById('auth-login-email').value;
+  const pass = document.getElementById('auth-login-pass').value;
+
+  try {
+    if (window.jennahSupabase) {
+      await window.jennahSupabase.signIn(email, pass);
+    }
+    closeAuthModal();
+    showToast(`✨ Bienvenue, ${email.split('@')[0]}!`);
+  } catch (err) {
+    showToast('Login failed: ' + err.message);
+  }
+}
+
+async function handleAuthRegister(event) {
+  event.preventDefault();
+  const name = document.getElementById('auth-reg-name').value;
+  const email = document.getElementById('auth-reg-email').value;
+  const pass = document.getElementById('auth-reg-pass').value;
+
+  try {
+    if (window.jennahSupabase) {
+      await window.jennahSupabase.signUp(email, pass, name);
+    }
+    closeAuthModal();
+    showToast(`✨ Account created for ${name}! Welcome to Maison JENNAH.`);
+  } catch (err) {
+    showToast('Registration failed: ' + err.message);
   }
 }
 
 // =========================================================
-// 7. WISHLIST SYSTEM
+// 8. WISHLIST MANAGEMENT
 // =========================================================
 function toggleWishlist(productId, event) {
   if (event) event.stopPropagation();
@@ -798,7 +750,6 @@ function toggleWishlist(productId, event) {
   }
   saveWishlist();
   
-  // Update view if currently on category or product or wishlist page
   const currentView = history.state?.view || 'home';
   if (currentView === 'category') renderCategory(history.state?.extra);
   if (currentView === 'wishlist') renderWishlistPage();
@@ -826,27 +777,12 @@ function renderWishlistPage() {
 
   if (emptyState) emptyState.style.display = 'none';
   if (grid) {
-    grid.innerHTML = savedProds.map(p => `
-      <div class="product-card">
-        <div class="product-card-img-wrap" onclick="navigate('product','${p.id}')">
-          <img src="${p.img}" alt="${p.name}">
-        </div>
-        <button class="wishlist-btn active" onclick="toggleWishlist('${p.id}', event)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-          </svg>
-        </button>
-        <div class="product-info" onclick="navigate('product','${p.id}')">
-          <div class="product-name">${p.name}</div>
-          <div class="product-price">${formatPrice(p.sale || p.price)}</div>
-        </div>
-      </div>
-    `).join('');
+    grid.innerHTML = savedProds.map(p => createProductCardHtml(p)).join('');
   }
 }
 
 // =========================================================
-// 8. LIVE SEARCH
+// 9. LIVE SEARCH OVERLAY
 // =========================================================
 function openSearch() {
   const overlay = document.getElementById('search-overlay');
@@ -872,6 +808,7 @@ function handleSearchInput(query) {
   if (q.length > 0) {
     matches = PRODUCTS.filter(p => 
       p.name.toLowerCase().includes(q) ||
+      p.frenchName.toLowerCase().includes(q) ||
       p.cat.toLowerCase().includes(q) ||
       p.subcat.toLowerCase().includes(q) ||
       p.desc.toLowerCase().includes(q)
@@ -879,14 +816,14 @@ function handleSearchInput(query) {
   }
 
   if (countMsg) {
-    countMsg.textContent = q.length > 0 ? `${matches.length} result(s) for "${q}"` : 'Popular Recommendations';
+    countMsg.textContent = q.length > 0 ? `${matches.length} modest piece(s) found for "${q}"` : 'Popular Recommendations';
   }
 
   if (matches.length === 0) {
     resultsGrid.innerHTML = `
       <div style="grid-column:1/-1; text-align:center; padding:4rem 2rem; color:var(--text-muted);">
-        <p style="font-size:1.1rem; margin-bottom:0.5rem;">No products matching "${q}"</p>
-        <p style="font-size:12px;">Try searching for "Abaya", "Hijab", "Dress", or "Khaki".</p>
+        <p style="font-size:1.1rem; margin-bottom:0.5rem;">No modest pieces matching "${q}"</p>
+        <p style="font-size:12px;">Try searching for "Abaya", "Medina Silk", "Hijab", or "Linen".</p>
       </div>
     `;
     return;
@@ -912,7 +849,7 @@ function setSearchQuery(text) {
 }
 
 // =========================================================
-// 9. MOBILE DRAWER & UTILITIES
+// 10. UTILITIES, TOASTS & INITIALIZATION
 // =========================================================
 function openMob() {
   document.getElementById('mob-overlay').classList.add('open');
@@ -959,6 +896,12 @@ function handleNewsletter(event) {
   }
 }
 
+function handleContactSubmit(event) {
+  event.preventDefault();
+  showToast('✨ Merci! Your concierge inquiry has been sent to our Paris atelier.');
+  event.target.reset();
+}
+
 function handleCurrencyChange(select) {
   const val = select.value;
   if (val.includes('EUR')) currentCurrency = 'EUR';
@@ -968,60 +911,58 @@ function handleCurrencyChange(select) {
   
   localStorage.setItem('jennah_currency', currentCurrency);
   
-  // Re-render views with new currency
-  const view = history.state?.view || 'home';
-  if (view === 'category') renderCategory(history.state?.extra);
-  if (view === 'product') renderProduct(currentProductId);
-  if (view === 'wishlist') renderWishlistPage();
+  const hash = window.location.hash.replace('#', '') || 'home';
+  handleHashRoute();
   updateCartUI();
   showToast(`Currency updated to ${currentCurrency}`);
 }
 
-// =========================================================
-// 10. INITIALIZATION
-// =========================================================
+// Announcement Bar Rotation
+const announcements = [
+  'Free delivery with Mondial Relay on orders <a href="#faq" class="spa" data-view="faq">over €100*</a>',
+  'New Spring 2026 Modest Capsule &bull; Discover Medina Silk Abayas',
+  'Paris Boutiques in Aubervilliers &amp; Noisy-le-Sec Open Tuesday - Saturday'
+];
+let annIdx = 0;
+setInterval(() => {
+  annIdx = (annIdx + 1) % announcements.length;
+  const annEl = document.getElementById('ann-text');
+  if (annEl) {
+    annEl.style.opacity = '0';
+    setTimeout(() => {
+      annEl.innerHTML = announcements[annIdx];
+      annEl.style.opacity = '1';
+    }, 250);
+  }
+}, 5000);
+
+// Global Key Listeners & DOM Init
 window.addEventListener('DOMContentLoaded', () => {
-  // Update badges & storage state
   updateCartUI();
   updateWishlistUI();
 
-  // Handle header scroll
   const hdr = document.getElementById('hdr');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       hdr.classList.add('scrolled');
     } else {
       hdr.classList.remove('scrolled');
     }
   });
 
-  // Global key bindings
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeSearch();
+      closeCheckoutModal();
+      closeSizeGuideModal();
+      closeAppointmentModal();
+      closeAuthModal();
       if (document.getElementById('cart-drawer').classList.contains('open')) {
         toggleCart();
       }
     }
   });
 
-  // Initial Route Check
-  const path = window.location.pathname;
-  if (path.includes('/collections/')) {
-    const cat = path.split('/collections/')[1] || 'all-clothing';
-    navigate('category', cat);
-  } else if (path.includes('/products/')) {
-    const prodId = path.split('/products/')[1] || 'kairouan-khaki';
-    navigate('product', prodId);
-  } else if (path.includes('/pages/brand')) {
-    navigate('brand');
-  } else if (path.includes('/pages/stores')) {
-    navigate('stores');
-  } else if (path.includes('/pages/faq')) {
-    navigate('faq');
-  } else if (path.includes('/pages/wishlist')) {
-    navigate('wishlist');
-  } else {
-    navigate('home');
-  }
+  // Handle route based on initial hash or path
+  handleHashRoute();
 });

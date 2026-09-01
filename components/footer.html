@@ -1,70 +1,68 @@
-<footer style="background-color: var(--primary-color); color: var(--white); padding: 5rem 0 2rem 0; margin-top: 5rem;">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 4rem;">
-            
-            <!-- Column 1 -->
-            <div>
-                <h3 style="font-family: var(--font-heading); margin-bottom: 1.5rem; font-size: 1.25rem;">CLIENT BOUTIQUE</h3>
-                <p style="color: #A0A0A0; font-size: 0.875rem; margin-bottom: 1.5rem;">
-                    Elegance, modesty, and luxury tailored for the modern woman. Discover our exclusive collections.
-                </p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class='bx bxl-instagram'></i></a>
-                    <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class='bx bxl-tiktok'></i></a>
-                    <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class='bx bxl-facebook'></i></a>
-                    <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class='bx bxl-pinterest'></i></a>
-                </div>
-            </div>
-
-            <!-- Column 2 -->
-            <div>
-                <h4 style="font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Shop</h4>
-                <ul style="color: #A0A0A0; font-size: 0.875rem; line-height: 2.5;">
-                    <li><a href="#" data-link="home">New Arrivals</a></li>
-                    <li><a href="#" data-link="category">Abayas</a></li>
-                    <li><a href="#" data-link="category">Ready To Wear</a></li>
-                    <li><a href="#" data-link="category">Jilbabs</a></li>
-                    <li><a href="#" data-link="category">Accessories</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3 -->
-            <div>
-                <h4 style="font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Help & Information</h4>
-                <ul style="color: #A0A0A0; font-size: 0.875rem; line-height: 2.5;">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Delivery & Returns</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Track Order</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 4 / Newsletter -->
-            <div>
-                <h4 style="font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Newsletter</h4>
-                <p style="color: #A0A0A0; font-size: 0.875rem; margin-bottom: 1.5rem;">
-                    Subscribe to receive updates, access to exclusive deals, and more.
-                </p>
-                <form onsubmit="event.preventDefault();" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <input type="email" placeholder="Enter your email address" style="flex: 1; padding: 0.75rem 1rem; border: 1px solid #444; background: transparent; color: var(--white); min-width: 150px;">
-                    <button type="submit" class="btn-primary" style="background: var(--white); color: var(--primary-color);">Subscribe</button>
-                </form>
-            </div>
-            
-        </div>
-
-        <div style="border-top: 1px solid #444; padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-            <div style="color: #A0A0A0; font-size: 0.75rem;">
-                <p>&copy; 2025 Client Boutique. <strong>All Rights Reserved to Baba Puson</strong></p>
-            </div>
-            
-            <div style="display: flex; gap: 0.5rem; font-size: 1.8rem; color: #A0A0A0;">
-                <i class='bx bxl-visa' ></i>
-                <i class='bx bxl-mastercard' ></i>
-                <i class='bx bxl-paypal' ></i>
-                <i class='bx bxl-apple' ></i>
-            </div>
-        </div>
+<!-- Footer Component -->
+<footer>
+  <div class="footer-grid">
+    <!-- Col 1: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Sign up to receive early access to new modest drops, Ramadan capsules, and Parisian styling notes.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="Enter your email..." required>
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
+
+    <!-- Col 2: Client Service -->
+    <div class="footer-col">
+      <h4>Client Service</h4>
+      <ul>
+        <li><a href="#faq" class="spa" data-view="faq">Delivery &amp; Tracking</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Returns &amp; Exchanges</a></li>
+        <li><a href="javascript:void(0)" onclick="openSizeGuideModal()">Size &amp; Fit Guide</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Payment &amp; Security</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Mondial Relay Points</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Legal -->
+    <div class="footer-col">
+      <h4>Legal &amp; Privacy</h4>
+      <ul>
+        <li><a href="#faq" class="spa" data-view="faq">Terms &amp; Conditions</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Privacy Policy</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Cookie Preferences</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Legal Notices</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: The Brand -->
+    <div class="footer-col">
+      <h4>JENNAH Paris</h4>
+      <ul>
+        <li><a href="#brand" class="spa" data-view="brand">Our Story &amp; Heritage</a></li>
+        <li><a href="#stores" class="spa" data-view="stores">Our Stores &amp; Hours</a></li>
+        <li><a href="#lookbook" class="spa" data-view="lookbook">Spring 2026 Lookbook</a></li>
+        <li><a href="#category/sale" class="spa" data-view="category" data-cat="sale">Sale &amp; Archive</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 5: Brand Logo -->
+    <div class="footer-col">
+      <div class="footer-logo">JENNAH</div>
+      <p style="font-size:11px; margin-top:0.6rem; color:var(--text-muted);">Paris &bull; Modest Fashion House</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <select onchange="handleCurrencyChange(this)">
+        <option value="EUR">France / Global (EUR €)</option>
+        <option value="USD">United States (USD $)</option>
+        <option value="GBP">United Kingdom (GBP £)</option>
+        <option value="BDT">Bangladesh (BDT ৳)</option>
+      </select>
+    </div>
+    <div>
+      Crédits. &copy; 2026 &bull; JENNAH Boutique &nbsp;|&nbsp; <strong>Crafted with &hearts; for Vercel &amp; Supabase</strong>
+    </div>
+  </div>
 </footer>

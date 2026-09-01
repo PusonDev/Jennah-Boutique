@@ -4,22 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JENNAH | Modest Fashion Paris — Timeless Elegance</title>
-  <meta name="description" content="JENNAH Boutique — Timeless elegance in Parisian modest fashion. Discover our signature abayas, oversized t-shirts, modal hijabs, maxi dresses, and luxury modest wear.">
-  <meta name="keywords" content="modest fashion, jennah boutique, abaya, hijab, modest dress, parisian fashion, oversize tshirt">
-  <meta name="author" content="PusonDev">
-  <meta name="geo.region" content="FR-IDF">
-  <meta name="geo.placename" content="Paris">
+  <meta name="description" content="JENNAH Boutique — Timeless elegance in Parisian modest fashion. Discover our signature abayas, oversized organic t-shirts, modal hijabs, maxi dresses, and luxury modest wear.">
+  <meta name="keywords" content="modest fashion, jennah boutique, abaya, hijab, modest dress, parisian fashion, oversize tshirt, burkini, prayer dress">
+  <meta name="author" content="JENNAH Boutique">
   
   <!-- OpenGraph / Social Meta -->
   <meta property="og:title" content="JENNAH | Modest Fashion Paris">
   <meta property="og:description" content="Timeless elegance in Parisian modest fashion. Signature abayas, dresses, and premium hijabs.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=1200&q=80">
+  <meta property="og:image" content="assets/images/hero_modest_paris.jpg">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Jost (Headings) & Montserrat (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/main.css">
@@ -28,10 +26,10 @@
 <body>
 
 <!-- =========================================================
-     1. ANNOUNCEMENT BAR
+     1. ROTATING ANNOUNCEMENT BAR
      ========================================================= -->
-<div class="ann-bar">
-  <span>Free delivery with Mondial Relay on orders&nbsp;<a href="#" class="spa" data-view="faq">over €100*</a></span>
+<div class="ann-bar" id="ann-bar">
+  <span id="ann-text">Free delivery with Mondial Relay on orders <a href="#faq" class="spa" data-view="faq">over €100*</a></span>
 </div>
 
 <!-- =========================================================
@@ -39,7 +37,7 @@
      ========================================================= -->
 <header id="hdr">
   <div class="hdr-inner">
-    <!-- Mobile Hamburger Toggle -->
+    <!-- Mobile Hamburger Button -->
     <div class="mob-menu-btn" onclick="openMob()" aria-label="Open Navigation">
       <span></span>
       <span></span>
@@ -47,61 +45,64 @@
     </div>
 
     <!-- Brand Logo -->
-    <a href="/en" class="logo spa" data-view="home">JENNAH</a>
+    <a href="#home" class="logo spa" data-view="home">JENNAH</a>
 
     <!-- Desktop Mega Navigation -->
     <nav class="main-nav">
       <!-- PRINTEMPS -->
       <div class="nav-item">
-        <a class="spa" data-view="category" data-cat="printemps">PRINTEMPS</a>
+        <a href="#category/printemps" class="spa" data-view="category" data-cat="printemps">PRINTEMPS</a>
         <div class="mega-row">
-          <a class="spa" data-view="category" data-cat="oversize-tshirt">OVERSIZE T-SHIRT</a>
-          <a class="spa" data-view="category" data-cat="dresses">LONG DRESS & ABAYA</a>
-          <a class="spa" data-view="category" data-cat="hijab">PREMIUM HIJAB</a>
-          <a class="spa" data-view="category" data-cat="set-two-pieces">SET TWO PIECES</a>
-          <a class="spa" data-view="category" data-cat="burkini">BURKINI</a>
+          <a href="#category/printemps" class="spa" data-view="category" data-cat="printemps">All Spring Drop 2026</a>
+          <a href="#category/oversize-tshirt" class="spa" data-view="category" data-cat="oversize-tshirt">Oversize T-Shirt</a>
+          <a href="#category/dresses" class="spa" data-view="category" data-cat="dresses">Long Dresses &amp; Abayas</a>
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">Premium Hijabs</a>
+          <a href="#category/set-two-pieces" class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Sets</a>
+          <a href="#category/burkini" class="spa" data-view="category" data-cat="burkini">Modest Swimwear</a>
         </div>
       </div>
 
       <!-- HIJAB -->
       <div class="nav-item">
-        <a class="spa" data-view="category" data-cat="hijab">HIJAB</a>
+        <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">HIJAB BAR</a>
         <div class="mega-row">
-          <a class="spa" data-view="category" data-cat="premium-jersey">Premium Jersey</a>
-          <a class="spa" data-view="category" data-cat="modal-hijab">Modal Silk</a>
-          <a class="spa" data-view="category" data-cat="breath-jersey">Breath Jersey</a>
-          <a class="spa" data-view="category" data-cat="air-jersey">Air Jersey</a>
-          <a class="spa" data-view="category" data-cat="bamboo-hijab">Bamboo Hijab</a>
-          <a class="spa" data-view="category" data-cat="sport-hijab">Sport Hijab</a>
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">All Hijab Collection</a>
+          <a href="#category/premium-jersey" class="spa" data-view="category" data-cat="premium-jersey">Premium Jersey</a>
+          <a href="#category/modal-hijab" class="spa" data-view="category" data-cat="modal-hijab">Modal Silk (Soie de Modal)</a>
+          <a href="#category/prayer-set" class="spa" data-view="category" data-cat="prayer-set">Prayer Dresses &amp; Hijabs</a>
         </div>
       </div>
 
       <!-- ALL CLOTHING -->
       <div class="nav-item">
-        <a class="spa" data-view="category" data-cat="all-clothing">ALL CLOTHING</a>
-        <div class="dropdown" style="left:0; transform:none; min-width:190px">
-          <a class="spa" data-view="category" data-cat="dresses">Dresses & Abayas ›</a>
-          <a class="spa" data-view="category" data-cat="top">Tops & Shirts ›</a>
-          <a class="spa" data-view="category" data-cat="bottom">Trousers & Palazzo ›</a>
-          <a class="spa" data-view="category" data-cat="sets">Co-ord Sets ›</a>
-          <a class="spa" data-view="category" data-cat="hijab">All Hijabs ›</a>
-          <a class="spa" data-view="category" data-cat="burkini">Swimwear / Burkini ›</a>
-          <a class="spa" data-view="category" data-cat="tote-bag">Tote Bags & Accessories</a>
+        <a href="#category/all-clothing" class="spa" data-view="category" data-cat="all-clothing">ALL CLOTHING</a>
+        <div class="dropdown" style="left:0; transform:none; min-width:210px">
+          <a href="#category/dresses" class="spa" data-view="category" data-cat="dresses">Abayas &amp; Long Dresses ›</a>
+          <a href="#category/top" class="spa" data-view="category" data-cat="top">Oversized Tops &amp; Shirts ›</a>
+          <a href="#category/set-two-pieces" class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Modest Sets ›</a>
+          <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">All Hijabs ›</a>
+          <a href="#category/burkini" class="spa" data-view="category" data-cat="burkini">Burkini &amp; Modest Swim ›</a>
+          <a href="#category/prayer-set" class="spa" data-view="category" data-cat="prayer-set">Prayer Outfits ›</a>
         </div>
+      </div>
+
+      <!-- LOOKBOOK -->
+      <div class="nav-item">
+        <a href="#lookbook" class="spa" data-view="lookbook">LOOKBOOK</a>
       </div>
 
       <!-- SALE -->
       <div class="nav-item sale-item">
-        <a class="spa" data-view="category" data-cat="sale">SALE</a>
+        <a href="#category/sale" class="spa" data-view="category" data-cat="sale">SALE ARCHIVE</a>
       </div>
 
       <!-- EXPLORE -->
       <div class="nav-item">
         <span>EXPLORE</span>
         <div class="dropdown" style="right:0; left:auto; transform:none">
-          <a class="spa" data-view="brand">Story of the Brand</a>
-          <a class="spa" data-view="stores">Our Stores & Boutiques</a>
-          <a class="spa" data-view="faq">Frequently Asked Questions</a>
+          <a href="#brand" class="spa" data-view="brand">Story of the Brand</a>
+          <a href="#stores" class="spa" data-view="stores">Our Stores (Aubervilliers &amp; Noisy)</a>
+          <a href="#faq" class="spa" data-view="faq">Frequently Asked Questions</a>
         </div>
       </div>
     </nav>
@@ -109,24 +110,24 @@
     <!-- Header Action Icons -->
     <div class="hdr-icons">
       <!-- Search Trigger -->
-      <button onclick="openSearch()" title="Search">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      <button onclick="openSearch()" title="Search Catalog">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
       </button>
 
       <!-- Account Trigger -->
-      <button class="spa" data-view="faq" title="Account / Help">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <button onclick="openAuthModal()" title="My Account / Sign In">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
 
       <!-- Wishlist Trigger -->
       <div class="wishlist-hdr-wrap spa" data-view="wishlist" title="Wishlist">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         <span class="badge-count wishlist-count-badge" style="display:none">0</span>
       </div>
 
       <!-- Cart Drawer Trigger -->
       <div class="cart-wrapper" onclick="toggleCart()" title="Shopping Cart">
-        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span class="badge-count cart-count-badge" style="display:none">0</span>
       </div>
     </div>
@@ -142,61 +143,171 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-slide spa" data-view="category" data-cat="printemps">
-      <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=1800&q=85" alt="JENNAH Spring Summer 2026 Collection">
+      <img src="assets/images/hero_modest_paris.jpg" alt="JENNAH Parisian Modest Fashion 2026 Collection">
       <div class="hero-overlay-content">
-        <span class="hero-tagline">Spring / Summer 2026</span>
-        <h1 class="hero-title">Le T-Shirt Oversize &amp; Dresses</h1>
+        <span class="hero-tagline">Parisian Modest Fashion &bull; Spring 2026</span>
+        <h1 class="hero-title">Timeless Modesty &amp; Luxury Drape</h1>
+        <p class="hero-subtitle">Signature Medina Silk Abayas, Flowing Robes &amp; Premium Modal Hijabs</p>
         <a class="hero-btn spa" data-view="category" data-cat="printemps">Discover Collection</a>
       </div>
     </div>
   </section>
 
-  <!-- Editorial 1: The Oversized T-Shirt -->
+  <!-- Trust Badges Strip -->
+  <section class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div>
+          <h4>Mondial Relay &bull; Free Over €100</h4>
+          <p>France, Belgium &amp; Luxembourg express pickup</p>
+        </div>
+      </div>
+      <div class="trust-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div>
+          <h4>Dispatched within 24 Hours</h4>
+          <p>Orders prepared with care in our Paris atelier</p>
+        </div>
+      </div>
+      <div class="trust-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0115.5-6.4L21 8M21 3v5h-5M21 12a9 9 0 01-15.5 6.4L3 16M3 21v-5h5"/></svg>
+        <div>
+          <h4>14-Day Free Returns</h4>
+          <p>Hassle-free exchanges and full refunds</p>
+        </div>
+      </div>
+      <div class="trust-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div>
+          <h4>100% Secure Payment</h4>
+          <p>Visa, Apple Pay, PayPal &amp; Klarna 3x installments</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Showcase -->
+  <section class="cat-showcase-section">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">CURATED COLLECTIONS</span>
+      <h2 class="section-title">Shop by Category</h2>
+    </div>
+    <div class="cat-card-grid">
+      <div class="cat-card spa" data-view="category" data-cat="dresses">
+        <img src="assets/images/abaya_epure_medina.jpg" alt="Abayas and Dresses">
+        <div class="cat-card-overlay">
+          <h3>Abayas &amp; Kimonos</h3>
+          <span>Explore 18 Pieces &rsaquo;</span>
+        </div>
+      </div>
+      <div class="cat-card spa" data-view="category" data-cat="hijab">
+        <img src="assets/images/hijab_jersey_sand.jpg" alt="Hijab Collection">
+        <div class="cat-card-overlay">
+          <h3>Hijab Bar</h3>
+          <span>Jersey, Modal &amp; Silk &rsaquo;</span>
+        </div>
+      </div>
+      <div class="cat-card spa" data-view="category" data-cat="set-two-pieces">
+        <img src="assets/images/ensemble_linen_ecru.jpg" alt="Two Piece Sets">
+        <div class="cat-card-overlay">
+          <h3>Two-Piece Modest Sets</h3>
+          <span>Linen &amp; Crepe Coordinates &rsaquo;</span>
+        </div>
+      </div>
+      <div class="cat-card spa" data-view="category" data-cat="oversize-tshirt">
+        <img src="assets/images/tshirt_oversize_paris.jpg" alt="Oversize T-Shirts">
+        <div class="cat-card-overlay">
+          <h3>Oversized Organic Tops</h3>
+          <span>Heavyweight French Cotton &rsaquo;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial 1: The Signature Medina Silk Abaya -->
   <section class="editorial">
     <div class="edit-img">
-      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1000&q=85" alt="The Oversized T-Shirt">
+      <img src="assets/images/abaya_kairouan_olive.jpg" alt="Signature Pleated Abaya">
     </div>
     <div class="edit-text">
-      <span class="edit-tag">New Collection</span>
-      <h2 class="edit-title">THE OVERSIZED T-SHIRT</h2>
+      <span class="edit-tag">Best Seller Signature</span>
+      <h2 class="edit-title">THE SIGNATURE ABAYA &amp; KIMONO</h2>
       <p class="edit-desc">
-        Discover our signature JENNAH t-shirt, a timeless piece. Made of a premium 100% heavy organic French cotton fabric, this essential basic combines comfort and refined Parisian elegance to accompany your sunny spring-summer days.
+        Engineered with architectural precision and high-density non-transparent Medina Silk and fluid crepe. Each cut celebrates graceful modest coverage, discreet side pockets, and serene Parisian elegance for every occasion.
       </p>
-      <a class="edit-cta spa" data-view="category" data-cat="oversize-tshirt">Shop the Basic</a>
+      <a class="edit-cta spa" data-view="category" data-cat="dresses">Explore Signature Abayas</a>
     </div>
   </section>
 
-  <!-- Editorial 2: The Long Dress & Abaya -->
+  <!-- Editorial 2: The Oversized Organic T-Shirt -->
   <section class="editorial reverse">
-    <div class="edit-text" style="background:var(--white)">
-      <span class="edit-tag">Best Seller</span>
-      <h2 class="edit-title">THE LONG DRESS &amp; ABAYA</h2>
+    <div class="edit-text">
+      <span class="edit-tag">Everyday Essential</span>
+      <h2 class="edit-title">THE OVERSIZED ORGANIC T-SHIRT</h2>
       <p class="edit-desc">
-        Fluid, graceful, and breathable, our long dresses accompany you from sunrise to evening gatherings. Each silhouette is meticulously engineered to deliver the perfect modest drape for every occasion.
+        Crafted from 100% heavy organic French cotton (240 GSM). Features an elongated modest curved back hem, dropped shoulders, and subtle tone-on-tone JENNAH Paris embroidery at the nape.
       </p>
-      <a class="edit-cta spa" data-view="category" data-cat="dresses">Explore Dresses</a>
+      <a class="edit-cta spa" data-view="category" data-cat="oversize-tshirt">Shop Oversized Basics</a>
     </div>
     <div class="edit-img">
-      <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1000&q=85" alt="Long Dress">
+      <img src="assets/images/tshirt_oversize_paris.jpg" alt="The Oversized T-Shirt">
     </div>
   </section>
 
-  <!-- 2-Column Promo: Stores & Brand Story -->
+  <!-- Featured Trending Products Grid -->
+  <section class="featured-products-section">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">SPRING / SUMMER 2026</span>
+      <h2 class="section-title">Trending Modest Pieces</h2>
+    </div>
+    <div class="products-grid" id="home-featured-grid"></div>
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a class="hero-btn spa" data-view="category" data-cat="all-clothing">View Complete Catalog</a>
+    </div>
+  </section>
+
+  <!-- Physical Boutiques Showcase Banner -->
   <section class="two-col-img">
     <div class="col-item spa" data-view="stores">
-      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1000&q=85" alt="Our Boutiques">
+      <img src="assets/images/boutique_paris_aubervilliers.jpg" alt="JENNAH Paris Flagship Store">
       <div class="col-overlay">
-        <h2>OUR STORES</h2>
-        <p>Paris &bull; Aubervilliers &bull; Noisy-le-Sec</p>
-        <a class="spa" data-view="stores">Store Hours &amp; Directions</a>
+        <h2>OUR BOUTIQUES</h2>
+        <p>Flagship Aubervilliers &bull; Concept Store Noisy-le-Sec</p>
+        <a class="spa" data-view="stores">Store Hours &amp; Directions &rsaquo;</a>
       </div>
     </div>
     <div class="col-item spa" data-view="brand">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=85" alt="Our Story">
+      <img src="assets/images/boutique_concept_store.jpg" alt="JENNAH Paris Concept Sanctuary">
       <div class="col-overlay">
-        <h2>OUR STORY</h2>
-        <p>Parisian Modesty Since 2014</p>
-        <a class="spa" data-view="brand">Learn More</a>
+        <h2>OUR STORY &amp; HERITAGE</h2>
+        <p>Parisian Modest Maison Founded in 2014</p>
+        <a class="spa" data-view="brand">Discover Our Craft &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="reviews-strip-section">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">PARISIAN CLIENTELE</span>
+      <h2 class="section-title">What Our Community Says</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"The quality of the Medina Silk is unlike anything else. The drape is floor-length, completely opaque, and so breathable. Merci JENNAH!"</p>
+        <div class="review-author">Sarah L. &bull; Paris, France</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Ordered the Kairouan pleated abaya in Olive and the matching Modal Silk hijab. Fast delivery in 48h to London. Perfectly modest and chic."</p>
+        <div class="review-author">Amina K. &bull; London, UK</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Visited the boutique in Aubervilliers. The private styling advice was exceptional. The two-piece linen set is my absolute summer staple."</p>
+        <div class="review-author">Fatima B. &bull; Brussels, Belgium</div>
       </div>
     </div>
   </section>
@@ -205,87 +316,126 @@
 <!-- VIEW: CATEGORY / COLLECTION -->
 <div id="view-category" class="page">
   <div class="cat-header-wrap">
+    <div class="cat-breadcrumb">
+      <a href="#home" class="spa" data-view="home">Home</a> / <span id="cat-breadcrumb-curr">Collections</span>
+    </div>
     <h1 class="cat-header" id="cat-title">All Clothing</h1>
-    <p class="cat-subtitle">Carefully curated modest fashion pieces designed in Paris</p>
+    <p class="cat-subtitle" id="cat-subtitle">Carefully curated modest fashion pieces designed in Paris</p>
   </div>
 
   <!-- Filter & Sort Bar -->
   <div class="cat-filters">
     <div class="cat-filters-left">
       <span class="cat-filter-btn active" data-filter="all" onclick="filterCategory('all')">All</span>
-      <span class="cat-filter-btn" data-filter="dresses" onclick="filterCategory('dresses')">Dresses &amp; Abayas</span>
-      <span class="cat-filter-btn" data-filter="hijab" onclick="filterCategory('hijab')">Hijabs</span>
-      <span class="cat-filter-btn" data-filter="top" onclick="filterCategory('top')">Tops</span>
-      <span class="cat-filter-btn" data-filter="bottom" onclick="filterCategory('bottom')">Bottoms</span>
-      <span class="cat-filter-btn" data-filter="sets" onclick="filterCategory('sets')">Sets</span>
+      <span class="cat-filter-btn" data-filter="dresses" onclick="filterCategory('dresses')">Abayas &amp; Dresses</span>
+      <span class="cat-filter-btn" data-filter="hijab" onclick="filterCategory('hijab')">Hijab Bar</span>
+      <span class="cat-filter-btn" data-filter="set-two-pieces" onclick="filterCategory('set-two-pieces')">Two-Piece Sets</span>
+      <span class="cat-filter-btn" data-filter="top" onclick="filterCategory('top')">Oversized Tops</span>
       <span class="cat-filter-btn" data-filter="burkini" onclick="filterCategory('burkini')">Burkini</span>
       <span class="cat-filter-btn" data-filter="prayer-set" onclick="filterCategory('prayer-set')">Prayer Sets</span>
     </div>
     <div class="cat-filters-right">
       <select class="sort-select" onchange="handleSort(this.value)">
-        <option value="featured">Featured</option>
+        <option value="featured">Featured Collection</option>
         <option value="price-low">Price: Low to High</option>
         <option value="price-high">Price: High to Low</option>
-        <option value="name">Name: A-Z</option>
+        <option value="name">Name: A &rarr; Z</option>
       </select>
     </div>
   </div>
 
   <!-- Dynamic Product Grid -->
-  <div class="products-grid" id="products-grid">
-    <!-- Injected dynamically via app.js -->
-  </div>
+  <div class="products-grid" id="products-grid"></div>
 </div>
 
 <!-- VIEW: PRODUCT DETAIL -->
 <div id="view-product" class="page">
   <div class="product-page">
-    <!-- Dynamic Gallery -->
+    <!-- Interactive Dynamic Gallery -->
     <div class="product-gallery" id="product-gallery"></div>
 
     <!-- Product Info Panel -->
     <div class="product-info-panel">
       <div class="prod-breadcrumb">
-        <a href="#" class="spa" data-view="home">Home</a> / 
-        <a href="#" class="spa" data-view="category" data-cat="all-clothing">Collections</a> / 
-        <span>Details</span>
+        <a href="#home" class="spa" data-view="home">Home</a> / 
+        <a href="#category/all-clothing" class="spa" data-view="category" data-cat="all-clothing">Collections</a> / 
+        <span id="prod-breadcrumb-name">Details</span>
       </div>
 
+      <div class="prod-badge-row" id="prod-badge-wrap"></div>
       <h1 class="prod-title" id="prod-name">Product Name</h1>
-      <div class="prod-price" id="prod-price">€0,00 EUR</div>
+      
+      <div class="prod-price-rating-row">
+        <div class="prod-price" id="prod-price">€0,00 EUR</div>
+        <div class="prod-rating" id="prod-rating-stars">★★★★★ <span id="prod-review-count">(48)</span></div>
+      </div>
 
-      <!-- Size Selector -->
-      <span class="prod-label">Select Size:</span>
+      <!-- Color Swatches with Live Selection -->
+      <span class="prod-label">Color: <strong id="prod-color-name">Standard</strong></span>
+      <div class="color-swatches" id="prod-color-swatches"></div>
+
+      <!-- Size Selector + Size Guide Modal Trigger -->
+      <div class="size-header-row">
+        <span class="prod-label" style="margin:0;">Select Size:</span>
+        <button class="size-guide-btn" onclick="openSizeGuideModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Guide des Tailles / Size Guide
+        </button>
+      </div>
       <div class="size-options" id="prod-size-options"></div>
 
       <p class="model-note">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Model is 1m74 tall and wearing size 2 (M/L)
+        Model is 1m74 tall and wearing Taille 2 (Full modest floor drape).
       </p>
 
-      <!-- Color Swatches -->
-      <span class="prod-label">Color: <strong id="prod-color-name">Standard</strong></span>
-      <div class="color-swatches" id="prod-color-swatches"></div>
+      <!-- Quantity + Add to Cart CTAs -->
+      <div class="prod-action-row">
+        <div class="qty-counter">
+          <button onclick="adjustProdQty(-1)">−</button>
+          <span id="prod-qty-val">1</span>
+          <button onclick="adjustProdQty(1)">+</button>
+        </div>
+        <button class="add-to-cart" id="prod-add-btn" onclick="addToCart()">Add to Shopping Bag</button>
+      </div>
 
-      <!-- Add to Cart CTA -->
-      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
-
-      <!-- Fast Delivery Banner -->
+      <!-- Fast Delivery & Stock Note -->
       <p class="delivery-note">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-        In Stock. Dispatched within 24h &bull; Express delivery available
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <span>In Stock in Paris. Dispatched within 24h &bull; Free Mondial Relay over €100</span>
       </p>
 
-      <!-- Accordions -->
+      <!-- Accordion Details -->
       <div class="acc-item open">
-        <button class="acc-btn" onclick="toggleAcc(this)">Description &amp; Fabric <span class="acc-icon">+</span></button>
+        <button class="acc-btn" onclick="toggleAcc(this)">Description &amp; Modest Cut <span class="acc-icon">+</span></button>
         <div class="acc-content" id="prod-desc-content"></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">Delivery &amp; Free Returns <span class="acc-icon">+</span></button>
+        <button class="acc-btn" onclick="toggleAcc(this)">Composition &amp; Fabric Care <span class="acc-icon">+</span></button>
+        <div class="acc-content" id="prod-care-content">
+          Non-transparent premium weave. Wash inside-out at 30°C delicate cycle in a wash pouch. Do not tumble dry. Steam gently on low heat.
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">Mondial Relay Delivery &amp; Returns <span class="acc-icon">+</span></button>
         <div class="acc-content">
-          Standard Delivery via Colissimo (4-6 working days). Mondial Relay is Free on orders over €100. 14-day hassle-free return guarantee on all unworn items with original tags intact.
+          &bull; <strong>Mondial Relay Point (France/Belgium):</strong> 3-5 working days (Free on orders over €100).<br>
+          &bull; <strong>Colissimo Home Delivery (Europe):</strong> 2-4 working days (€6.90).<br>
+          &bull; <strong>DHL Express Worldwide:</strong> 2-3 business days.<br>
+          &bull; <strong>14-Day Guarantee:</strong> Easy returns for unworn items with tags attached.
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">Verified Client Reviews <span class="acc-icon">+</span></button>
+        <div class="acc-content">
+          <div class="review-summary-box">
+            <div class="review-score">4.9 / 5.0</div>
+            <p>Based on verified purchases from our Paris &amp; European online store.</p>
+            <button class="review-btn" onclick="showToast('Thank you! Review submission is available for verified purchases.')">Write a Review</button>
+          </div>
         </div>
       </div>
 
@@ -298,10 +448,10 @@
 <!-- VIEW: BRAND STORY -->
 <div id="view-brand" class="page">
   <div class="brand-hero">
-    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85" alt="JENNAH Story">
+    <img src="assets/images/hero_modest_paris.jpg" alt="JENNAH Parisian Maison">
     <div class="brand-hero-overlay">
-      <span>JENNAH, Timeless Elegance</span>
-      <h1>Our Story &amp; Heritage</h1>
+      <span>MAISON JENNAH PARIS</span>
+      <h1>Our Story &amp; Modest Heritage</h1>
     </div>
   </div>
 
@@ -312,25 +462,25 @@
         Founded in 2014 by designer Myriam Atallah alongside her mother, JENNAH is a Parisian modest fashion house that harmonizes architectural minimalism with refined modest sensibilities.
       </p>
       <p>
-        Each collection represents a poetic balance between the designer's North African heritage (Tunisia and Algeria) and the understated sophistication of Parisian Haute Couture. Every cut celebrates silhouette fluidity, modesty, and confident womanhood.
+        Each collection represents a poetic balance between the designer's North African heritage (Tunisia and Algeria) and the understated sophistication of Parisian Haute Couture. Every cut celebrates silhouette fluidity, non-transparent opacity, and confident womanhood.
       </p>
       <p>
-        Durability and fabric integrity remain the cornerstone of our brand. We partner with ethical artisan workshops across Turkey, Asia, and Portugal, hand-selecting certified organic cotton, breathable modal, and fluid linens.
+        Durability and fabric integrity remain the cornerstone of our brand. We partner with ethical artisan workshops across Turkey and Portugal, hand-selecting certified organic cotton, breathable modal, and Medina silk.
       </p>
     </div>
     <div class="brand-img">
-      <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=1000&q=85" alt="Modest Craftsmanship">
+      <img src="assets/images/abaya_epure_medina.jpg" alt="Modest Craftsmanship">
     </div>
   </div>
 
   <div class="brand-experience">
     <div class="brand-experience-inner">
-      <h2>The Boutique Experience</h2>
+      <h2>Ethical Atelier Craftsmanship &amp; Charity</h2>
       <p>
-        In 2018, JENNAH opened its first flagship boutique in Aubervilliers, followed in 2024 by our second concept store in Noisy-le-Sec. These physical spaces welcome women into a tranquil sanctuary with dedicated stylists ready to assist with fit and layering.
+        In 2018, JENNAH opened its first flagship boutique in Aubervilliers, followed in 2024 by our concept store in Noisy-le-Sec. These physical spaces welcome women into a tranquil sanctuary with dedicated modest stylists ready to assist with sizing and layering.
       </p>
       <p>
-        Beyond fashion, JENNAH is deeply committed to humanitarian solidarity, donating a portion of annual proceeds to charities supporting underprivileged communities and educational empowerment.
+        Beyond fashion, JENNAH is deeply committed to humanitarian solidarity, donating a portion of annual proceeds to charitable initiatives supporting educational empowerment and clean water projects.
       </p>
     </div>
   </div>
@@ -339,38 +489,40 @@
 <!-- VIEW: STORES -->
 <div id="view-stores" class="page">
   <div class="stores-header">
-    <h1>Our Boutiques</h1>
-    <p>Experience the fabrics, colors, and personalized styling in person</p>
+    <h1>Our Boutiques in Paris</h1>
+    <p>Experience our fabrics, fluid drapes, and personalized modest styling in person</p>
   </div>
 
   <!-- Store 1: Aubervilliers -->
   <div class="store-section">
     <div class="store-img">
-      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=85" alt="Boutique Aubervilliers">
+      <img src="assets/images/boutique_paris_aubervilliers.jpg" alt="Boutique Flagship Aubervilliers">
     </div>
     <div class="store-info">
       <p class="store-addr">86, Rue des Cités &bull; 93300 Aubervilliers, France</p>
-      <h2 class="store-name">JENNAH AUBERVILLIERS</h2>
+      <h2 class="store-name">JENNAH AUBERVILLIERS (FLAGSHIP)</h2>
       <div class="store-hours">
         <h4>Horaires d'Ouverture</h4>
         <p>
-          Lundi : Fermé<br>
           Mardi – Samedi : 10h00 – 19h00<br>
-          Dimanche : Fermé
+          Lundi &amp; Dimanche : Fermé
         </p>
       </div>
-      <a href="https://maps.google.com/?q=86+Rue+des+Cites+93300+Aubervilliers" target="_blank" rel="noopener" class="store-btn">Get Directions</a>
+      <div class="store-action-buttons">
+        <a href="https://maps.google.com/?q=86+Rue+des+Cites+93300+Aubervilliers" target="_blank" rel="noopener" class="store-btn">Get Directions</a>
+        <button class="store-btn secondary" onclick="openAppointmentModal('Aubervilliers')">Book VIP Styling Session</button>
+      </div>
     </div>
   </div>
 
   <!-- Store 2: Noisy-le-Sec -->
   <div class="store-section reverse">
     <div class="store-img">
-      <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=1200&q=85" alt="Boutique Noisy-le-Sec">
+      <img src="assets/images/boutique_concept_store.jpg" alt="Boutique Concept Noisy-le-Sec">
     </div>
     <div class="store-info">
       <p class="store-addr">Centre Commercial &bull; 93130 Noisy-le-Sec, France</p>
-      <h2 class="store-name">JENNAH NOISY-LE-SEC</h2>
+      <h2 class="store-name">JENNAH NOISY-LE-SEC (CONCEPT SANCTUARY)</h2>
       <div class="store-hours">
         <h4>Horaires d'Ouverture</h4>
         <p>
@@ -378,7 +530,48 @@
           Dimanche : 11h00 – 18h00
         </p>
       </div>
-      <a href="https://maps.google.com/?q=Noisy-le-Sec+France" target="_blank" rel="noopener" class="store-btn">Get Directions</a>
+      <div class="store-action-buttons">
+        <a href="https://maps.google.com/?q=Noisy-le-Sec+France" target="_blank" rel="noopener" class="store-btn">Get Directions</a>
+        <button class="store-btn secondary" onclick="openAppointmentModal('Noisy-le-Sec')">Book VIP Styling Session</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: LOOKBOOK -->
+<div id="view-lookbook" class="page">
+  <div class="stores-header">
+    <h1>Spring / Summer 2026 Modest Lookbook</h1>
+    <p>Explore Parisian modest layering inspirations and shop direct looks</p>
+  </div>
+  <div class="lookbook-grid">
+    <div class="lookbook-item">
+      <img src="assets/images/abaya_kairouan_olive.jpg" alt="Lookbook 1">
+      <div class="lookbook-overlay">
+        <h3>The Parisian Olive Crepe Look</h3>
+        <button class="lookbook-shop-btn spa" data-view="product" data-product="kairouan-khaki">Shop This Look &rsaquo;</button>
+      </div>
+    </div>
+    <div class="lookbook-item">
+      <img src="assets/images/abaya_epure_medina.jpg" alt="Lookbook 2">
+      <div class="lookbook-overlay">
+        <h3>The Iconic Medina Silk Taupe</h3>
+        <button class="lookbook-shop-btn spa" data-view="product" data-product="epure-taupe-abaya">Shop This Look &rsaquo;</button>
+      </div>
+    </div>
+    <div class="lookbook-item">
+      <img src="assets/images/ensemble_linen_ecru.jpg" alt="Lookbook 3">
+      <div class="lookbook-overlay">
+        <h3>Natural Linen 2-Piece Coordinate</h3>
+        <button class="lookbook-shop-btn spa" data-view="product" data-product="set-two-pieces-linen">Shop This Look &rsaquo;</button>
+      </div>
+    </div>
+    <div class="lookbook-item">
+      <img src="assets/images/dress_kimono_origin.jpg" alt="Lookbook 4">
+      <div class="lookbook-overlay">
+        <h3>The Celadon Kimono Ensemble</h3>
+        <button class="lookbook-shop-btn spa" data-view="product" data-product="origin-dress-kaki">Shop This Look &rsaquo;</button>
+      </div>
     </div>
   </div>
 </div>
@@ -386,67 +579,59 @@
 <!-- VIEW: FAQ -->
 <div id="view-faq" class="page">
   <div class="faq-wrap">
-    <h1 class="faq-title">Frequently Asked Questions</h1>
+    <h1 class="faq-title">Frequently Asked Questions &amp; Client Support</h1>
     
     <div class="acc-item open">
       <button class="acc-btn" onclick="toggleAcc(this)">How do I place an international order? <span class="acc-icon">+</span></button>
       <div class="acc-content">
-        We ship worldwide across Europe, North America, the Middle East, and Asia. Simply select your country in the footer currency/region selector. International customs duties and tracking details will be calculated at checkout.
+        We ship worldwide across Europe, North America, the Middle East, and Asia. Simply select your country in the currency/region selector. International customs duties and tracking details will be calculated at checkout.
       </div>
     </div>
 
     <div class="acc-item">
       <button class="acc-btn" onclick="toggleAcc(this)">What should I do if an item is sold out? <span class="acc-icon">+</span></button>
       <div class="acc-content">
-        If an item or size is tagged as SOLD OUT, you can click the item card and register your email on the product page. You will receive an automated alert the instant our atelier completes the re-stock.
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <button class="acc-btn" onclick="toggleAcc(this)">Can I modify or cancel my order after placing it? <span class="acc-icon">+</span></button>
-      <div class="acc-content">
-        Orders placed before 2:00 PM CET are processed rapidly by our logistics hub. If you need to make changes, please contact client support within 1 hour of placing your order.
+        If an item or size is tagged as SOLD OUT, click the item card to register your email. You will receive an automated alert the instant our Paris/Istanbul atelier restocks.
       </div>
     </div>
 
     <div class="acc-item">
       <button class="acc-btn" onclick="toggleAcc(this)">What payment methods do you accept? <span class="acc-icon">+</span></button>
       <div class="acc-content">
-        We accept Visa, Mastercard, American Express, Apple Pay, PayPal, and Klarna Pay in 3 installments (available in France, UK, and Germany).
+        We accept Visa, Mastercard, American Express, Apple Pay, PayPal, and Klarna Pay in 3 installments (available in France, UK, Germany, and Belgium).
       </div>
     </div>
 
     <div class="acc-item">
       <button class="acc-btn" onclick="toggleAcc(this)">What are the delivery times and shipping costs? <span class="acc-icon">+</span></button>
       <div class="acc-content">
-        &bull; <strong>Mondial Relay Point (France/Belgium):</strong> 4-7 working days (Free over €100, otherwise €4.90).<br>
-        &bull; <strong>Colissimo Home Delivery (Europe):</strong> 3-5 working days (€6.90).<br>
+        &bull; <strong>Mondial Relay Point (France/Belgium):</strong> 3-5 working days (Free over €100, otherwise €4.90).<br>
+        &bull; <strong>Colissimo Home Delivery (Europe):</strong> 2-4 working days (€6.90).<br>
         &bull; <strong>DHL Express Worldwide:</strong> 2-3 working days.
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <button class="acc-btn" onclick="toggleAcc(this)">How long do I have to return an item? <span class="acc-icon">+</span></button>
-      <div class="acc-content">
-        You have 14 calendar days from the date of package reception to initiate a return. Items must be unworn, unwashed, perfume-free, and in their original packaging with labels intact.
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <button class="acc-btn" onclick="toggleAcc(this)">When will I receive my refund? <span class="acc-icon">+</span></button>
-      <div class="acc-content">
-        Refunds are credited to your original payment method within 5 to 7 business days following inspection at our Paris fulfillment center.
       </div>
     </div>
 
     <div class="acc-item">
       <button class="acc-btn" onclick="toggleAcc(this)">How do I choose the correct size? <span class="acc-icon">+</span></button>
       <div class="acc-content">
-        Our garments are cut with a generous, modest drape: <br>
-        &bull; <strong>Taille 1:</strong> Fits EU 36 to 40 (Height under 1m65)<br>
-        &bull; <strong>Taille 2:</strong> Fits EU 40 to 44 (Height 1m65 to 1m75)<br>
-        &bull; <strong>Taille 3:</strong> Fits EU 44 to 48 (Height over 1m75)
+        Our abayas and modest dresses are engineered for a generous floor-length drape:<br>
+        &bull; <strong>Taille 1:</strong> Height 1m55 to 1m65 (EU 36 to 40)<br>
+        &bull; <strong>Taille 2:</strong> Height 1m65 to 1m74 (EU 40 to 44)<br>
+        &bull; <strong>Taille 3:</strong> Height 1m75 and above (EU 44 to 48)
       </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-card">
+      <h3>Contact Client Concierge</h3>
+      <p>Have a question regarding your order or fit? Our Paris team responds within 24h.</p>
+      <form onsubmit="handleContactSubmit(event)" class="contact-form-grid">
+        <input type="text" placeholder="Your Full Name" required>
+        <input type="email" placeholder="Your Email Address" required>
+        <input type="text" placeholder="Order Number (Optional)">
+        <textarea placeholder="How may we assist you?" rows="4" required></textarea>
+        <button type="submit" class="hero-btn">Send Message</button>
+      </form>
     </div>
   </div>
 </div>
@@ -455,7 +640,7 @@
 <div id="view-wishlist" class="page">
   <div class="wishlist-page-wrap">
     <div class="wishlist-header">
-      <h1>Your Wishlist</h1>
+      <h1>Your Saved Wishlist</h1>
       <p>Save your favorite modest fashion pieces for later</p>
     </div>
     
@@ -480,22 +665,22 @@
     <!-- Col 1: Newsletter -->
     <div class="footer-col">
       <h4>Newsletter</h4>
-      <p>Sign up to receive early access to new collections, exclusive drops, and Parisian modest styling notes.</p>
+      <p>Sign up to receive early access to new modest drops, Ramadan capsules, and Parisian styling notes.</p>
       <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" placeholder="Enter your email address..." required>
+        <input type="email" placeholder="Enter your email..." required>
         <button type="submit">Subscribe</button>
       </form>
     </div>
 
-    <!-- Col 2: FAQs & Help -->
+    <!-- Col 2: Client Service -->
     <div class="footer-col">
       <h4>Client Service</h4>
       <ul>
-        <li><a href="#" class="spa" data-view="faq">Delivery &amp; Tracking</a></li>
-        <li><a href="#" class="spa" data-view="faq">Returns &amp; Exchanges</a></li>
-        <li><a href="#" class="spa" data-view="faq">Size &amp; Fit Guide</a></li>
-        <li><a href="#" class="spa" data-view="faq">Payment &amp; Security</a></li>
-        <li><a href="#" class="spa" data-view="faq">Order Status</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Delivery &amp; Tracking</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Returns &amp; Exchanges</a></li>
+        <li><a href="javascript:void(0)" onclick="openSizeGuideModal()">Size &amp; Fit Guide</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Payment &amp; Security</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Mondial Relay Points</a></li>
       </ul>
     </div>
 
@@ -503,10 +688,10 @@
     <div class="footer-col">
       <h4>Legal &amp; Privacy</h4>
       <ul>
-        <li><a href="#" class="spa" data-view="faq">Terms &amp; Conditions</a></li>
-        <li><a href="#" class="spa" data-view="faq">Privacy Policy</a></li>
-        <li><a href="#" class="spa" data-view="faq">Cookie Preferences</a></li>
-        <li><a href="#" class="spa" data-view="faq">Legal Notices</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Terms &amp; Conditions</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Privacy Policy</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Cookie Preferences</a></li>
+        <li><a href="#faq" class="spa" data-view="faq">Legal Notices</a></li>
       </ul>
     </div>
 
@@ -514,25 +699,14 @@
     <div class="footer-col">
       <h4>JENNAH Paris</h4>
       <ul>
-        <li><a href="#" class="spa" data-view="brand">Our Story</a></li>
-        <li><a href="#" class="spa" data-view="stores">Our Stores</a></li>
-        <li><a href="#" class="spa" data-view="category" data-cat="printemps">Spring Collection 2026</a></li>
-        <li><a href="#" class="spa" data-view="category" data-cat="ramadan">Ramadan Capsule</a></li>
+        <li><a href="#brand" class="spa" data-view="brand">Our Story &amp; Heritage</a></li>
+        <li><a href="#stores" class="spa" data-view="stores">Our Stores &amp; Hours</a></li>
+        <li><a href="#lookbook" class="spa" data-view="lookbook">Spring 2026 Lookbook</a></li>
+        <li><a href="#category/sale" class="spa" data-view="category" data-cat="sale">Sale &amp; Archive</a></li>
       </ul>
     </div>
 
-    <!-- Col 5: Social Networks -->
-    <div class="footer-col">
-      <h4>Follow Us</h4>
-      <ul>
-        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
-        <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
-      </ul>
-    </div>
-
-    <!-- Col 6: Brand Logo -->
+    <!-- Col 5: Brand Logo -->
     <div class="footer-col">
       <div class="footer-logo">JENNAH</div>
       <p style="font-size:11px; margin-top:0.6rem; color:var(--text-muted);">Paris &bull; Modest Fashion House</p>
@@ -547,14 +721,9 @@
         <option value="GBP">United Kingdom (GBP £)</option>
         <option value="BDT">Bangladesh (BDT ৳)</option>
       </select>
-      <select>
-        <option>English</option>
-        <option>Français</option>
-        <option>العربية</option>
-      </select>
     </div>
     <div>
-      Crédits. &copy; 2026 &bull; JENNAH Boutique &nbsp;|&nbsp; <strong>Crafted with &hearts; by PusonDev</strong>
+      Crédits. &copy; 2026 &bull; JENNAH Boutique &nbsp;|&nbsp; <strong>Crafted with &hearts; for Vercel &amp; Supabase</strong>
     </div>
   </div>
 </footer>
@@ -565,7 +734,7 @@
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
   <div class="cart-top">
-    <h3>Shopping Cart</h3>
+    <h3>Shopping Bag</h3>
     <span class="cart-close" onclick="toggleCart()">&times;</span>
   </div>
 
@@ -582,11 +751,15 @@
 
   <!-- Cart Footer with Subtotal & Checkout -->
   <div class="cart-footer">
+    <div class="promo-box">
+      <input type="text" id="promo-input" placeholder="Promo code (e.g. PARIS10)">
+      <button onclick="applyPromoCode()">Apply</button>
+    </div>
     <div class="cart-subtotal">
       <span>Subtotal</span>
       <span id="cart-subtotal-val">€0,00 EUR</span>
     </div>
-    <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout</button>
+    <button class="checkout-btn" onclick="openCheckoutModal()">Proceed to Checkout &rsaquo;</button>
   </div>
 </div>
 
@@ -597,21 +770,20 @@
   <div class="search-header">
     <div class="search-input-wrap">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-      <input type="text" class="search-input" id="search-input" placeholder="Search for dresses, abayas, hijabs..." oninput="handleSearchInput(this.value)">
+      <input type="text" class="search-input" id="search-input" placeholder="Search for abayas, hijabs, sets, dresses..." oninput="handleSearchInput(this.value)">
     </div>
     <span class="search-close-btn" onclick="closeSearch()">&times;</span>
   </div>
 
   <div class="search-body">
-    <!-- Quick Search Pill Suggestions -->
     <div class="search-quick-tags">
       <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-muted);">Quick Search:</span>
       <span class="search-tag" onclick="setSearchQuery('Abaya')">Abaya</span>
       <span class="search-tag" onclick="setSearchQuery('Jersey Hijab')">Jersey Hijab</span>
-      <span class="search-tag" onclick="setSearchQuery('Khaki')">Khaki Dress</span>
-      <span class="search-tag" onclick="setSearchQuery('Oversize')">Oversize T-Shirt</span>
+      <span class="search-tag" onclick="setSearchQuery('Medina Silk')">Medina Silk</span>
+      <span class="search-tag" onclick="setSearchQuery('Linen')">Linen Set</span>
       <span class="search-tag" onclick="setSearchQuery('Burkini')">Burkini</span>
-      <span class="search-tag" onclick="setSearchQuery('Prayer')">Prayer Set</span>
+      <span class="search-tag" onclick="setSearchQuery('Prayer')">Prayer Dress</span>
     </div>
 
     <p id="search-count-msg" style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:1.5rem;">Popular Recommendations</p>
@@ -620,7 +792,207 @@
 </div>
 
 <!-- =========================================================
-     7. MOBILE NAVIGATION OVERLAY
+     7. MULTI-STEP CHECKOUT MODAL
+     ========================================================= -->
+<div class="modal-backdrop" id="checkout-modal">
+  <div class="modal-card checkout-modal-card">
+    <div class="modal-header">
+      <h3>Secure Checkout &bull; JENNAH Paris</h3>
+      <span class="modal-close" onclick="closeCheckoutModal()">&times;</span>
+    </div>
+    <div class="modal-body" id="checkout-modal-body">
+      <div class="checkout-steps-nav">
+        <span class="step-badge active" id="step-1-nav">1. Shipping</span>
+        <span class="step-badge" id="step-2-nav">2. Payment</span>
+        <span class="step-badge" id="step-3-nav">3. Confirmation</span>
+      </div>
+
+      <form id="checkout-form" onsubmit="processCheckout(event)">
+        <!-- Step 1: Shipping Details -->
+        <div id="checkout-step-1">
+          <h4 style="margin-bottom:1rem; font-size:13px; text-transform:uppercase; letter-spacing:1px;">Contact &amp; Shipping Address</h4>
+          <div class="form-grid-2">
+            <input type="text" id="chk-fname" placeholder="First Name" required>
+            <input type="text" id="chk-lname" placeholder="Last Name" required>
+          </div>
+          <input type="email" id="chk-email" placeholder="Email Address" required style="margin-top:0.8rem;">
+          <input type="text" id="chk-address" placeholder="Street Address" required style="margin-top:0.8rem;">
+          <div class="form-grid-3" style="margin-top:0.8rem;">
+            <input type="text" id="chk-city" placeholder="City" required>
+            <input type="text" id="chk-zip" placeholder="Postal Code" required>
+            <select id="chk-country">
+              <option value="FR">France</option>
+              <option value="BE">Belgium</option>
+              <option value="UK">United Kingdom</option>
+              <option value="US">United States</option>
+              <option value="BD">Bangladesh</option>
+            </select>
+          </div>
+          <div style="margin-top:1.5rem; text-align:right;">
+            <button type="button" class="hero-btn" onclick="goToCheckoutStep(2)">Continue to Payment &rsaquo;</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment Methods -->
+        <div id="checkout-step-2" style="display:none;">
+          <h4 style="margin-bottom:1rem; font-size:13px; text-transform:uppercase; letter-spacing:1px;">Select Payment Method</h4>
+          <div class="payment-options">
+            <label class="pay-option">
+              <input type="radio" name="pay_method" value="card" checked>
+              <span>Credit / Debit Card (Visa, Mastercard, AMEX)</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pay_method" value="applepay">
+              <span>Apple Pay / Google Pay</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pay_method" value="paypal">
+              <span>PayPal</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pay_method" value="klarna">
+              <span>Klarna (Pay in 3 Installments)</span>
+            </label>
+          </div>
+
+          <div class="order-summary-box" id="checkout-order-summary"></div>
+
+          <div style="margin-top:1.5rem; display:flex; justify-content:space-between;">
+            <button type="button" class="hero-btn secondary" onclick="goToCheckoutStep(1)">&lsaquo; Back to Shipping</button>
+            <button type="submit" class="hero-btn" id="pay-now-btn">Pay &amp; Confirm Order</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Confirmation -->
+        <div id="checkout-step-3" style="display:none; text-align:center; padding:2rem 1rem;">
+          <div style="font-size:3rem; color:#27ae60; margin-bottom:1rem;">✓</div>
+          <h3 style="font-size:1.4rem; margin-bottom:0.5rem; letter-spacing:1px;">Merci! Your Order is Confirmed</h3>
+          <p style="color:var(--text-muted); font-size:13px; margin-bottom:1.5rem;" id="order-confirm-msg">Order #JB-849201 has been placed successfully. A confirmation email and tracking link have been dispatched.</p>
+          <button type="button" class="hero-btn" onclick="closeCheckoutModal(); navigate('home');">Return to Boutique</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     8. SIZE GUIDE MODAL
+     ========================================================= -->
+<div class="modal-backdrop" id="sizeguide-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Guide des Tailles &bull; Size Guide</h3>
+      <span class="modal-close" onclick="closeSizeGuideModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:1.2rem;">
+        JENNAH garments are tailored with generous Parisian modest ease. Choose according to your total height for the perfect modest floor drape.
+      </p>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Height Range</th>
+            <th>EU Size</th>
+            <th>Abaya Length</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Taille 1</strong></td>
+            <td>1m55 – 1m65 (5'1" – 5'5")</td>
+            <td>36 – 40</td>
+            <td>138 cm (54")</td>
+          </tr>
+          <tr>
+            <td><strong>Taille 2</strong></td>
+            <td>1m65 – 1m74 (5'5" – 5'8")</td>
+            <td>40 – 44</td>
+            <td>144 cm (56")</td>
+          </tr>
+          <tr>
+            <td><strong>Taille 3</strong></td>
+            <td>1m75 and above (5'9"+)</td>
+            <td>44 – 48</td>
+            <td>150 cm (59")</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:1.5rem; font-size:12px; color:var(--text-muted); line-height:1.6;">
+        <strong>Need fit advice?</strong> Our boutique stylists in Paris are available via concierge chat or in-store styling appointments.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     9. VIP STYLING APPOINTMENT MODAL
+     ========================================================= -->
+<div class="modal-backdrop" id="appointment-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Book a Private VIP Styling Session</h3>
+      <span class="modal-close" onclick="closeAppointmentModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:1.2rem;">
+        Enjoy 45 minutes of complimentary private styling in our Parisian sanctuary.
+      </p>
+      <form onsubmit="handleAppointmentSubmit(event)" class="contact-form-grid">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <select id="apt-location" required>
+          <option value="Aubervilliers">Flagship Boutique Aubervilliers</option>
+          <option value="Noisy-le-Sec">Concept Store Noisy-le-Sec</option>
+        </select>
+        <input type="date" required>
+        <textarea placeholder="Specific modest pieces or occasion you are shopping for?" rows="3"></textarea>
+        <button type="submit" class="hero-btn">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     10. AUTH / ACCOUNT MODAL (Ready for Supabase)
+     ========================================================= -->
+<div class="modal-backdrop" id="auth-modal">
+  <div class="modal-card" style="max-width:440px;">
+    <div class="modal-header">
+      <h3 id="auth-modal-title">Client Concierge Sign In</h3>
+      <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleAuthLogin(event)" style="margin-top:1.2rem;">
+        <input type="email" id="auth-login-email" placeholder="Email Address" required style="width:100%; margin-bottom:0.8rem;">
+        <input type="password" id="auth-login-pass" placeholder="Password" required style="width:100%; margin-bottom:1.2rem;">
+        <button type="submit" class="hero-btn" style="width:100%;">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" onsubmit="handleAuthRegister(event)" style="display:none; margin-top:1.2rem;">
+        <input type="text" id="auth-reg-name" placeholder="Full Name" required style="width:100%; margin-bottom:0.8rem;">
+        <input type="email" id="auth-reg-email" placeholder="Email Address" required style="width:100%; margin-bottom:0.8rem;">
+        <input type="password" id="auth-reg-pass" placeholder="Create Password" required style="width:100%; margin-bottom:1.2rem;">
+        <button type="submit" class="hero-btn" style="width:100%;">Create Account</button>
+      </form>
+
+      <div style="margin-top:1.2rem; text-align:center; font-size:11.5px; color:var(--text-muted);">
+        Connected to Supabase PostgreSQL Auth Backend &bull; 100% Encrypted
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     11. MOBILE NAVIGATION DRAWER
      ========================================================= -->
 <div class="mob-overlay" id="mob-overlay">
   <div class="mob-nav-top">
@@ -631,26 +1003,27 @@
   <div class="mob-links">
     <!-- PRINTEMPS -->
     <div class="mob-link" onclick="toggleMobSub('mob-sub-printemps')">
-      <span>PRINTEMPS</span>
+      <span>PRINTEMPS 2026</span>
       <span style="font-size:14px;">+</span>
     </div>
     <div class="mob-sub" id="mob-sub-printemps">
-      <a class="spa" data-view="category" data-cat="printemps">All Spring Collection</a>
-      <a class="spa" data-view="category" data-cat="oversize-tshirt">Oversize T-Shirt</a>
-      <a class="spa" data-view="category" data-cat="dresses">Long Dresses &amp; Abayas</a>
-      <a class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Sets</a>
+      <a href="#category/printemps" class="spa" data-view="category" data-cat="printemps">All Spring Drop</a>
+      <a href="#category/oversize-tshirt" class="spa" data-view="category" data-cat="oversize-tshirt">Oversize T-Shirts</a>
+      <a href="#category/dresses" class="spa" data-view="category" data-cat="dresses">Abayas &amp; Long Dresses</a>
+      <a href="#category/set-two-pieces" class="spa" data-view="category" data-cat="set-two-pieces">Two-Piece Sets</a>
+      <a href="#category/burkini" class="spa" data-view="category" data-cat="burkini">Modest Swimwear</a>
     </div>
 
-    <!-- HIJAB -->
+    <!-- HIJAB BAR -->
     <div class="mob-link" onclick="toggleMobSub('mob-sub-hijab')">
-      <span>HIJAB</span>
+      <span>HIJAB BAR</span>
       <span style="font-size:14px;">+</span>
     </div>
     <div class="mob-sub" id="mob-sub-hijab">
-      <a class="spa" data-view="category" data-cat="hijab">All Hijabs</a>
-      <a class="spa" data-view="category" data-cat="premium-jersey">Premium Jersey</a>
-      <a class="spa" data-view="category" data-cat="modal-hijab">Modal Silk</a>
-      <a class="spa" data-view="category" data-cat="breath-jersey">Breath Jersey</a>
+      <a href="#category/hijab" class="spa" data-view="category" data-cat="hijab">All Hijab Collection</a>
+      <a href="#category/premium-jersey" class="spa" data-view="category" data-cat="premium-jersey">Premium Jersey</a>
+      <a href="#category/modal-hijab" class="spa" data-view="category" data-cat="modal-hijab">Modal Silk</a>
+      <a href="#category/prayer-set" class="spa" data-view="category" data-cat="prayer-set">Prayer Outfits</a>
     </div>
 
     <!-- ALL CLOTHING -->
@@ -659,9 +1032,15 @@
       <span>&rsaquo;</span>
     </div>
 
+    <!-- LOOKBOOK -->
+    <div class="mob-link spa" data-view="lookbook">
+      <span>LOOKBOOK 2026</span>
+      <span>&rsaquo;</span>
+    </div>
+
     <!-- SALE -->
     <div class="mob-link spa" data-view="category" data-cat="sale" style="color:var(--accent-sale);">
-      <span>SALE &amp; ARCHIVES</span>
+      <span>SALE ARCHIVES</span>
       <span>%</span>
     </div>
 
@@ -684,11 +1063,13 @@
 </div>
 
 <!-- =========================================================
-     8. TOAST NOTIFICATION CONTAINER
+     12. TOAST NOTIFICATION CONTAINER
      ========================================================= -->
 <div class="toast-container" id="toast-container"></div>
 
-<!-- Master Application Script -->
+<!-- Application Data & Script Controllers -->
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
